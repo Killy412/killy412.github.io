@@ -4,7 +4,7 @@
   <a title="Chinese" href="docs/zh-CN/README.md">🇨🇳</a>
   <a title="Russian" href="docs/ru/README.md">🇷🇺</a>
 </div>
-<今天周二>
+
 # <div align="center"><a title="NexT website repository" href="https://github.com/theme-next/theme-next.org"><img align="center" width="56" height="56" src="https://raw.githubusercontent.com/theme-next/hexo-theme-next/master/source/images/logo.svg?sanitize=true"></a> e x T</div>
 
 <p align="center">
