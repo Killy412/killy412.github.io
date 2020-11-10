@@ -106,3 +106,7 @@ deploy:
   type: 'git'
   repo: 'git@github.com:Killy412/killy412.github.io.git'
   branch: master
+leancloud_counter_security:
+  enable_sync: true
+  # app_id: rjEGiCa******-gzGzoHsz
+  # app_key: zWE2Bry******8HmPyTpBQa

@@ -6,6 +6,7 @@ tags:
   - "运维"
 categories:
   - "Docker"
+toc: true
 ---
 
 ## 安装 Docker 虚拟机
@@ -20,8 +21,9 @@ systemctl enable docker # 开机自启
 systemctl start docker  # 启动
 systemctl stop docker  # 停止
 ```
+<!-- more -->
 
-#### 设置镜像加速器
+### 设置镜像加速器
 
 ```bash
 curl -sSL https://get.daocloud.io/daotools/set_mirror.sh | sh -s http://f1361db2.m.daocloud.io
@@ -228,4 +230,4 @@ docker images|grep none|awk '{print $3}'|xargs docker rmi
 docker rmi $(docker images | grep "^<none>" | awk "{print $3}")
 ```
 
-# **服务器重启,使用容器重启命令**
+## **服务器重启,使用容器重启命令**
