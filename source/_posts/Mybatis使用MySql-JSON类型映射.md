@@ -9,11 +9,12 @@ categories:
   - "Mybatis"
 ---
 
-### MyBatis中使用自定义转换器处理json类型
+### MyBatis 中使用自定义转换器处理 json 类型
 
-mysql在5.7.8版本以后就支持了json这种数据类型,在程序中处理的方法有很多,可以直接用string去接收json类型,然后再转. 也可以使用自定义转换器,需要继承`BaseTypeHandler<>`类,然后在配置文件中加个扫描路径,在使用的地方指定转换器.
+mysql 在 5.7.8 版本以后就支持了 json 这种数据类型,在程序中处理的方法有很多,可以直接用 string 去接收 json 类型,然后再转. 也可以使用自定义转换器,需要继承`BaseTypeHandler<>`类,然后在配置文件中加个扫描路径,在使用的地方指定转换器.
 
 1. 自定义转换器
+<!--more-->
 
 ```java
 package com.abc.common.handler;
@@ -58,6 +59,7 @@ public class JsonArrayHandler extends BaseTypeHandler<JSONArray> {
 ```
 
 2. 在配置文件中加上类型处理包
+
 ```xml
 # MyBatis配置
 mybatis:
@@ -75,17 +77,16 @@ mybatis:
 
 <!-- 新增语句时的处理 -->
 <insert id="insertGxInquiryRecord" parameterType="GxInquiryRecord">
-    insert into gx_inquiry_record(inquiry_detail) 
+    insert into gx_inquiry_record(inquiry_detail)
     values ( #{inquiryDetail,jdbcType=OTHER,typeHandler=com.abc.common.handler.JsonArrayHandler})
 </insert>
 ```
 
+### MySql 常用 Json 函数
 
-### MySql常用Json函数
+- json 是数组的话,使用`$[0]`来确定元素
+- json 是对象的话,使用`$.today`来确定元素
 
-- json是数组的话,使用`$[0]`来确定元素
-- json是对象的话,使用`$.today`来确定元素
-  
 ```sql
 # json数组移除某个元素
 select json_remove('[{"today": "周二", "tomorrow": "周三"},  {"today": "周四", "tomorrow": "周六"}]','$[0]')
@@ -109,4 +110,4 @@ select json_array_append('[{"today": "周四", "tomorrow": "周六"}]','$','[{"t
 select json_array_append('[{"today": "周四", "tomorrow": "周六"}]','$[0].today','周日')
 ```
 
-更多函数见[mysql json函数官方文档](https://dev.mysql.com/doc/refman/5.7/en/json-function-reference.html)
+更多函数见[mysql json 函数官方文档](https://dev.mysql.com/doc/refman/5.7/en/json-function-reference.html)

@@ -104,8 +104,7 @@ theme: next
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   type: "git"
-  # repo: 'git@github.com:Killy412/killy412.github.io.git'
-  repo: "https://github.com/Killy412/killy412.github.io.git"
+  repo: "git@github.com:Killy412/killy412.github.io.git"
   branch: master
 leancloud_counter_security:
   enable_sync: true
