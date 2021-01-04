@@ -184,7 +184,8 @@ social:
   #Instagram: https://instagram.com/yourname || fab fa-instagram
   Instagram: https://www.instagram.com/killy413/ || fab fa-instagram
   #Skype: skype:yourname?call|chat || fab fa-skype
-
+  
+rss: /atom.xml
 social_icons:
   enable: true
   icons_only: false

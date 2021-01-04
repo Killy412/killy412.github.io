@@ -13,7 +13,7 @@ timezone: "Asia/Shanghai"
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://example.com/child' and root as '/child/'
-url: https://killy412.github.io/
+url: https://killy412.github.io/child
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
@@ -110,3 +110,13 @@ leancloud_counter_security:
   enable_sync: true
   # app_id: rjEGiCa******-gzGzoHsz
   # app_key: zWE2Bry******8HmPyTpBQa
+feed:
+  type: atom
+  path: atom.xml
+  limit: 20
+  hub:
+  content:
+  content_limit: 140
+  content_limit_delim: " "
+  order_by: -date
+  icon: icon.png
