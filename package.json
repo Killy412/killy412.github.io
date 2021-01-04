@@ -3,25 +3,16 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "build": "hexo clean && hexo g && gulp default",
+    "build": "hexo clean && hexo g ",
     "clean": "hexo clean",
-    "deploy": "hexo clean && hexo g && gulp default && hexo d",
+    "deploy": "hexo clean && hexo g && hexo d",
     "server": "hexo clean && hexo g && hexo s"
   },
   "hexo": {
-    "version": "5.3.0"
+    "version": "5.2.0"
   },
   "dependencies": {
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-mobx": "^2.0.0",
     "canvas-nest.js": "^2.0.4",
-    "gulp": "^4.0.2",
-    "gulp-babel": "^8.0.0",
-    "gulp-clean-css": "^4.3.0",
-    "gulp-htmlclean": "^2.7.22",
-    "gulp-htmlmin": "^5.0.1",
-    "gulp-imagemin": "^7.1.0",
-    "gulp-uglify": "^3.0.2",
     "hexo": "^5.0.0",
     "hexo-deployer-git": "^2.1.0",
     "hexo-generator-archive": "^1.0.0",
@@ -34,10 +25,5 @@
     "hexo-renderer-marked": "^3.0.0",
     "hexo-renderer-stylus": "^2.0.0",
     "hexo-server": "^2.0.0"
-  },
-  "devDependencies": {
-    "@babel/core": "^7.12.10",
-    "@babel/preset-env": "^7.12.11",
-    "@babel/preset-react": "^7.12.10"
   }
 }
