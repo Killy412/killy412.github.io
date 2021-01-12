@@ -45,10 +45,12 @@ categories: "工具"
 - ASM bytecode viewer 字节码查看工具
 - .env files support
 - Elasticsearch
+- IDE Eval Reset (idea 重置插件 需要先配置插件仓库地址`https://plugins.zhile.io`)
 
 ## 重置 idea 试用期
 
 idea 更新的很快,然后上个版本的破解方法可能就无效了.所有对常更新的用户来说破解不那么重要,过期重置一下试用期更方便.
+Windows 环境没有试过,linux 亲测过,可以使用.不过现在有一个重置插件可以使用.
 
 - linux
 
