@@ -63,7 +63,7 @@ footer:
     color: "#ff0000"
 
   # If not defined, `author` from Hexo `_config.yml` will be used.
-  copyright: 
+  copyright:
 
   # Powered by Hexo & NexT
   powered: false
@@ -184,7 +184,7 @@ social:
   #Instagram: https://instagram.com/yourname || fab fa-instagram
   Instagram: https://www.instagram.com/killy413/ || fab fa-instagram
   #Skype: skype:yourname?call|chat || fab fa-skype
-  
+
 rss: /atom.xml
 social_icons:
   enable: true
@@ -604,8 +604,8 @@ changyan:
 # For more information: https://valine.js.org, https://github.com/xCss/Valine
 valine:
   enable: true
-  appid: 'YnYwhQ0zYy5QChw894NepGMa-gzGzoHsz'
-  appkey: 'LqgIRbwgpGDiKHfUIywom1du'
+  appid: "YnYwhQ0zYy5QChw894NepGMa-gzGzoHsz"
+  appkey: "LqgIRbwgpGDiKHfUIywom1du"
   notify: false # Mail notifier
   verify: false # Verification code
   placeholder: What's left # Comment box placeholder
@@ -681,8 +681,8 @@ cnzz_siteid:
 # Do not enable both `valine.visitor` and `leancloud_visitors`.
 leancloud_visitors:
   enable: false
-  app_id: 'YnYwhQ0zYy5QChw894NepGMa-gzGzoHsz'
-  app_key: 'LqgIRbwgpGDiKHfUIywom1du'
+  app_id: "YnYwhQ0zYy5QChw894NepGMa-gzGzoHsz"
+  app_key: "LqgIRbwgpGDiKHfUIywom1du"
   # Required for apps from CN region
   server_url: # <your server url>
   # Dependencies: https://github.com/theme-next/hexo-leancloud-counter-security
@@ -837,10 +837,21 @@ pace:
   # corner-indicator | fill-left | flat-top | flash | loading-bar | mac-osx | material | minimal
   theme: minimal
 
+# Canvas-nest
+# Dependencies: https://github.com/theme-next/theme-next-canvas-nest
+# For more information: https://github.com/hustcc/canvas-nest.js
+canvas_nest:
+  enable: true
+  onmobile: true # Display on mobile or not
+  color: "0,0,255" # RGB values, use `,` to separate
+  opacity: 0.5 # The opacity of line: 0~1
+  zIndex: -1 # z-index property of the background
+  count: 99 # The number of lines
+
 # JavaScript 3D library.
 # Dependencies: https://github.com/theme-next/theme-next-three
 three:
-  enable: false
+  enable: true
   three_waves: false
   canvas_lines: false
   canvas_sphere: false
