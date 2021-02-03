@@ -70,6 +70,8 @@ docker load < 压缩文件路径
 
 ```bash
 docker build [选项] <上下文路径>  # 构建镜像
+# 示例  -t 容器名称  3是版本号   .构建上下文
+docker build -t nginx:3 .
 ```
 
 - 创建容器
@@ -98,7 +100,8 @@ docker rm -f xxx 删除容器
 docker restart 容器id
 docker update --restart=always   #容器id  更新启动方式  docker启动容器就启动
                        =no  # 不自动启动
-docker logs -f -t --tail 行数 容器ID  实时查看docker日志
+docker logs -f -t  <容器ID>  # 实时查看docker日志 -t 显示时间戳
+docker logs --tail=20 <容器id>  # 查看20行日志
 docker inspect [容器id]  # 查看容器信息
 docker volume prune  # 清理多余的数据卷
 # 拷贝docker日志
