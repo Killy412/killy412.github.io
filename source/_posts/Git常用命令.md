@@ -5,13 +5,7 @@ tags: "Git"
 categories: "Git"
 ---
 
-## Git 命令
-
-```shell
-
-#推送本地内容
-git push -u origin(本地库名字) master(分支) 第二次提交不用-u
-```
+## Git 常用命令
 
 ### 创建版本库
 
@@ -24,6 +18,8 @@ git remote add name(本地库名字) git@github.com:path(用户名)/xxx.git(仓�
 git remote add 本地库名字 远程仓库路径
 
 ```
+
+<!--more-->
 
 ### 版本状态
 
@@ -56,21 +52,16 @@ git br -m [old_br] [new_br]  #分支重命名
 git stash          # 在master分支中：
 git checkout dev   # 切换到dev分支
 git stash apply    # 将修改同步到dev分支
+
+#推送本地分支到远程分支
+#远程已有 remote_branch 分支并且已经关联本地分支 且本地已经切换到本地分支
+git push
+#远程已有 remote_branch 分支但未关联本地分支 且本地已经切换到本地分支
+git push -u origin local_branch/remote_branch
+#远程没有 remote_branch 分支 本地已经切换到本地分支
+git push origin localhost_branch:remote_branch
+
 ```
-
-推送本地分支到远程分支
-远程已有 remote_branch 分支并且已经关联本地分支 且本地已经切换到本地分支 git push
-远程已有 remote_branch 分支但未关联本地分支 且本地已经切换到本地分支 git push -u origin/remote_branch
-远程没有 remote_branch 分支 本地已经切换到本地分支 git push origin localhost_branch:remote_branch
-
-正常情况我们要 clone 一个 github 工程是这样的
-
-git**@github**.com:jj/JForm.git
-
-如今在 github 工程是这样的
-git **clone github**:jj/JForm.git
-git_ali 阿里
-github github
 
 ### 删除某个文件的历史记录
 
@@ -127,7 +118,6 @@ git push origin master --force #强制提交
    git remote add upstream <原仓库地址>
    # 更新代码
    git pull upstream master
-
    ```
 
    fork 来的 master 主分支作为跟踪源仓库代码.
@@ -199,7 +189,17 @@ User git
 IdentityFile C:/Users/xxx/.ssh/other_rsa
 ```
 
-- 生成密钥文件命令
-  ```shell
-  ssh-keygen -t rsa -C "<邮件名>"
-  ```
+正常情况我们要 clone 一个 github 工程是这样的
+
+git**@github**.com:jj/JForm.git
+
+如今在 github 工程是这样的
+git **clone github**:jj/JForm.git
+git_ali 阿里
+github github
+
+### 生成密钥文件命令
+
+```shell
+ssh-keygen -t rsa -C "<邮件名>"
+```
