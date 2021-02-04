@@ -1,53 +1,57 @@
 ---
 title: Git常用命令
 date: 2021-02-04 09:43:27
-tags: - ""
-categories: - ""
+tags: "Git"
+categories: "Git"
 ---
 
-## Git命令
+## Git 命令
 
-Stage  本地库的暂缓群区
+```shell
 
-本地库和远程库关联 git remote add name(本地库名字) git@github.com:path(用户名)/xxx.git(仓库名)
-
-git remote add 本地库名字 远程仓库路径
-
-推送本地内容    git push -u origin(本地库名字) master(分支) 第二次提交不用-u
+#推送本地内容
+git push -u origin(本地库名字) master(分支) 第二次提交不用-u
+```
 
 ### 创建版本库
 
-- mkdir xxx      本地创建文件
-- cd  xxx          切换目录
-- pwd            显示当前目录
-- git init           初始化git本地仓库
-- git add xxx      添加文件到本地库
-- git commit -m ""  提交文件
+```shell
+git init  #初始化 git 本地仓库
+git add xxx #添加文件到本地库
+git commit -m "" #提交文件
+#本地库和远程库关联
+git remote add name(本地库名字) git@github.com:path(用户名)/xxx.git(仓库名)
+git remote add 本地库名字 远程仓库路径
+
+```
 
 ### 版本状态
-- git status     查看当前git的状态
-- git diff       查看修改的地方
-- git log--pretty[--oneline](提交信息一行输出) [-p](查看修改详情 增删修改文件数量) [--graph]以图形查看    查看日志
-- git reset --hard HEAD^^  回退head表示当前版本
-- git reflog        记录每次命令
+
+```shell
+git status  #查看当前 git 的状态
+git diff #查看修改的地方
+git log--pretty[--oneline](提交信息一行输出) [-p](查看修改详情 增删修改文件数量) [--graph]以图形查看 查看日志
+git reset --hard HEAD^^ #回退 head 表示当前版本
+git reflog #记录每次命令
+```
 
 ### 分支
 
-``` shell
-git branch            查看分支  
-git branch xxx        创建本地分支
-git checkout xx       切换本地分支
-git checkout -b xxx   创建+切换分支
+```shell
+git branch            #查看分支
+git branch xxx        #创建本地分支
+git checkout xx       #切换本地分支
+git checkout -b xxx   #创建+切换分支
 git fetch origin <分支名>     # 拉取远程分支到本地
-git checkout -b 本地分支x origin/远程分支x  # 拉取远程分支
+git checkout -b 本地分支x origin/远程分支x  # 拉取远程分支到本地
 git tag         # 查看所有tag
 git checkout -b 本地分支x tag名  # 切换到某次tag处代码
-git merge  xxx     合并某分支到当前分支
-git branch -d xxx    删除本地分支
-git branch -d -r origin/branchname 删除远程分支
-git branch -m|-M oldbranch newbranch 重命名分支 如果new名字已经存在 需要使用-M强制重命名
-git pull origin xxx 拉取分支上的代码
-git br -m [old_br] [new_br]  分支重命名
+git merge  xxx     #合并某分支到当前分支
+git branch -d xxx    #删除本地分支
+git branch -d -r origin/branchname #删除远程分支
+git branch -m|-M oldbranch newbranch #重命名分支 如果new名字已经存在 需要使用-M强制重命名
+git pull origin xxx #拉取分支上的代码
+git br -m [old_br] [new_br]  #分支重命名
 # 将其他分支的修改移到另一分支
 git stash          # 在master分支中：
 git checkout dev   # 切换到dev分支
@@ -55,19 +59,18 @@ git stash apply    # 将修改同步到dev分支
 ```
 
 推送本地分支到远程分支
-远程已有remote_branch分支并且已经关联本地分支 且本地已经切换到本地分支 git push
-远程已有remote_branch分支但未关联本地分支 且本地已经切换到本地分支 git push -u origin/remote_branch
-远程没有remote_branch分支 本地已经切换到本地分支 git push origin localhost_branch:remote_branch
+远程已有 remote_branch 分支并且已经关联本地分支 且本地已经切换到本地分支 git push
+远程已有 remote_branch 分支但未关联本地分支 且本地已经切换到本地分支 git push -u origin/remote_branch
+远程没有 remote_branch 分支 本地已经切换到本地分支 git push origin localhost_branch:remote_branch
 
-
-正常情况我们要clone一个github工程是这样的
+正常情况我们要 clone 一个 github 工程是这样的
 
 git**@github**.com:jj/JForm.git
 
-如今在github工程是这样的
+如今在 github 工程是这样的
 git **clone github**:jj/JForm.git
-git_ali      阿里
-github      github
+git_ali 阿里
+github github
 
 ### 删除某个文件的历史记录
 
@@ -78,21 +81,6 @@ git filter-branch --index-filter "git rm -r --cached --ignore-unmatch  <file/di
 # windows下
 git filter-branch --index-filter "git rm -r --cached --ignore-unmatch <file/dir>" HEAD
 ```
-
-
-
-配置本地git仓库用户名密码
-git config user.name ""
-git config user.email ""
-git config --global user.name ""
-
- 
-
-git log <filename> 查看文件的修改历史
-git show <commitid> <filename> 查看文件的某次修改
-git rm -r --cached <> 删除远程仓库文件
-git reset --hard [commit-hashcode] # [commit-hashcode]是某个 commit 的哈希值，可以用 git log 查看
-
 
 ## 回滚撤销操作
 
@@ -128,15 +116,9 @@ git merge --abort   #撤销合并
 git push origin master --force #强制提交
 ```
 
-4. 远程仓库
-
-```shell
-
-```
-
 ## pull request
 
-1. fork项目,克隆自己的仓库到本地
+1. fork 项目,克隆自己的仓库到本地
 
 2. 获取最新代码
 
@@ -145,10 +127,10 @@ git push origin master --force #强制提交
    git remote add upstream <原仓库地址>
    # 更新代码
    git pull upstream master
-   
+
    ```
 
-   fork来的master主分支作为跟踪源仓库代码.
+   fork 来的 master 主分支作为跟踪源仓库代码.
 
 3. 创建分支,贡献自己的代码.
 
@@ -182,9 +164,7 @@ git push origin master --force #强制提交
    切换到 branch1 分支的代码仓库，点击 Compare & pull request 按钮，添加注释后提交。
    ```
 
-   
-
-## 拉取github代码慢的解决方法
+## 拉取 github 代码慢的解决方法
 
 ```shell
 # 拉取代码
@@ -199,7 +179,7 @@ git clone https://github.com.cnpmjs.org/facebook/react
 git clone https://gitee.com/mirrors/react.git
 ```
 
-## 电脑上多git仓库配置
+## 电脑上多 git 仓库配置
 
 在用户路径下`.ssh`文件夹下创建`config`文件. 配置对应的服务器地址和私钥路径.
 
@@ -223,5 +203,3 @@ IdentityFile C:/Users/xxx/.ssh/other_rsa
   ```shell
   ssh-keygen -t rsa -C "<邮件名>"
   ```
-
-  
