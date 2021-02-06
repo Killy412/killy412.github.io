@@ -98,8 +98,10 @@ docker stop 容器
 docker start -i 容器
 docker rm -f xxx 删除容器
 docker restart 容器id
-docker update --restart=always   #容器id  更新启动方式  docker启动容器就启动
-                       =no  # 不自动启动
+docker update --restart=always <容器id>  # 更新启动方式  docker启动容器就启动
+                       =no  # 默认选项,不自动启动
+                       =unless-stopped  # 无论容器退出时状态如何始终重启容器
+                       =on-failure[max-retries]  # 容器处于非零状态时重启容器
 docker logs -f -t  <容器ID>  # 实时查看docker日志 -t 显示时间戳
 docker logs --tail=20 <容器id>  # 查看20行日志
 docker inspect [容器id]  # 查看容器信息
