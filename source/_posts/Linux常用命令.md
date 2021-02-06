@@ -19,6 +19,8 @@ df -hl
 ps -ef | grep -v grep | grep fisco-bcos
 # 查看端口占用情况
 netstat -ano | grep tcp |grep 8545
+netstat -tnlp | grep ssh
+netstat -anpt| grep ssh
 # 查看端口占用进程
 lsof -i:<端口>
 # 添加执行权限
@@ -27,6 +29,17 @@ chmod a+x <文件名>
 
 <!--more-->
 
+## 解决挖矿情况
+
+```shell
+# 查看文件隐藏属性
+lsattr /var/spool/cron/root
+# 修改隐藏属性
+chattr -isa /var/spool/cron/root
+# 查看定时任务
+crontab -l
+cat /var/spool/cron/root
+```
 ## scp 拷贝文件/文件夹命令
 
 ```shell
