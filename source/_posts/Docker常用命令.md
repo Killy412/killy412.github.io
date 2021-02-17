@@ -85,8 +85,6 @@ docker run -it --name 别名 镜像名字 程序名字
 docker run -d --name 别名 -p 宿主机端口:容器端口 镜像名字 程序名字
 #创建含有挂载目录的容器
 docker run -d --name 别名 -v 宿主机目录:容器目录 --privileged 镜像名字 程序名字
-#删除容器
-docker rm -f 容器id
 #######################操作容器
 #暂停容器
 docker pasue 容器
@@ -95,9 +93,9 @@ docker unpause 容器
 #停止容器
 docker stop 容器
 #启动容器
-docker start -i 容器
-docker rm -f xxx 删除容器
-docker restart 容器id
+docker start -i # 容器
+docker rm -f xxx # 删除容器
+docker restart 容器id #
 docker update --restart=always <容器id>  # 更新启动方式  docker启动容器就启动
                        =no  # 默认选项,不自动启动
                        =unless-stopped  # 无论容器退出时状态如何始终重启容器
@@ -133,6 +131,13 @@ docker export [容器ID] > [本地文件.tar]
 sudo docker login --username=killy412 registry.cn-beijing.aliyuncs.com
 # 注销
 docker logout
+```
+## docker自定义hosts
+
+### 启动时添加
+
+```shell
+docker run -it -d --name test --add-host=hostname:127.0.0.1 test:latest
 ```
 
 ## docker 安装 redis
