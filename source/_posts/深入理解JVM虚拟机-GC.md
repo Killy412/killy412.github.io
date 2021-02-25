@@ -137,36 +137,17 @@ OopMap 可以帮助 HotSpot 快速完成 GC Roots 扫描. 但是 OopMap 可能�
 
   java12 引入.RedHat 开发的. 与 G1 收集器类似,基于 Region 设计的垃圾回收器.停顿时间和堆大小没有关系.停顿时间与 ZGC 接近
 
-## 内存分配和回收策略
+### 常用组合
 
-### 对象优先在 EDAN 区进行分配
+|      Young      |       Old       |                JVM Option                |
+| :-------------: | :-------------: | :--------------------------------------: |
+|     Serial      |     Serial      |            -XX:+UserSerialGC             |
+|    Parallel     | Parallel/Serial | -XX:+UseParallelGC -XX:+UseParallelOldGC |
+| Serial/Parallel |       CMS       |   -XX:+UseParNewGC -XX:+UseConcSweepGC   |
+|       G1        |        -        |               -XX:+UseG1GC               |
 
-大多数情况,新对象优先在 edan 区进行分配. 当 edan 区没有足够空间时,jvm 发起一次 minor gc.
 
-### 大对象直接进入老年代
 
-大对象是指需要连续的内存空间.例如大的字符串或者元素数量很大的数组.如果大对象进行复制的话,会浪费很多内存空间. 所以 HotSpot 提供了`-XX:PretenureSizeThreshold`参数,指定大对象直接分配在老年代中,避免了在年轻代和 survivor 区之间来回复制.
-
-_`-XX:PretenureSizeThreshold`参数只对 Serial 和 ParNew 两款新生代回收器有效_
-
-### 长期存活的对象进入老年代
-
-因为 HotSpot 大部分回收器都采用的分代回收,那内存回收时必须能决策哪些对象存放在新生代,哪些存放在老年代.虚拟机为每个对象设置了一个年龄,当对象在新生代经过一次 minor gc 时,年龄+1.当熬过一定年龄时(默认是 15,可用`-XX:MaxTenuringThreshold=15`配置),就会晋升到老年代中.
-
-### 动态对象年龄判定
-
-为了能更好的适应不同程序的内存情况,HotSpot 并不是永远要求对象必须到年龄才晋升到老年代.**如果 Survivor 区中所有对象大小总和大于 Survivor 空间的一半,则年龄大于或等于该年龄的对象可以直接进入老年代.**
-
-### 空间分配担保:
-
-在发生 Minor GC 之前
-
-1.  虚拟机必须先检查老年代最大可用的连续空间是否大于新生代所有对象总空间,如果这个条件成立,那这一次 Minor GC 可以确保是安全的.
-2.  如果不成立,则虚拟机会先查看`-XX:HandlePromotionFailure` 参数的设置值是否允许担保失败(Handle Promotion Failure);
-3.  如果允许,那会继续检查老年代最大可用的连续空间是否大于历次晋升到老年代对象的平均大小,如果大于,将尝试进行一次 Minor GC,尽这次 Minor GC 是有风险的;
-4.  如果小于,或者-XX：HandlePromotionFailure 设置不允许冒险,那这时就要改为进行一次 Full GC.
-
-_在 JDK 6 Update24 之后,这个参数就没有用了.此版本之后的规则变为只要老年代的连续空间大于新生代对象总大小或者历次晋升的平均大小,就会进行 Minor GC,否则进行 Full GC._
 
 ## GC 参数相关
 
@@ -185,7 +166,7 @@ java -XX:+PrintFlagsFinal -version | grep HeapSize
 - jdk8 默认参数
   - -Xmx(1/4 PhyMem) -Xms (1/64 PhyMem[物理内存])
   - Parallel GC 多线程 GC
-  - -XX:NewRatio=2 (年轻代和老年代大小比例) -XX: SurvivorRatio=8()
+   - -XX:NewRatio=2 (年轻代和老年代大小比例,2为年轻代:老年代 1:2) -XX: SurvivorRatio=8(设置年轻代中survivor和edan区比例 8为1:8)
   - -XX:+UseAdaptiveSizePolicy
 - jvm 常用参数
 
@@ -196,8 +177,10 @@ java -XX:+PrintFlagsFinal -version | grep HeapSize
   -Xss              #设置每个线程的堆栈大小
   -XX:NewSize       #设置新生代最小空间大小
   -XX:MaxNewSize    #设置新生代最大空间大小
-  -XX:PermSize      #设置永久代最小空间大小
-  -XX:MaxPermSize   #设置永久代最大空间大小
+  -XX:PermSize      #设置永久代最小空间大小(jdk1.8已被弃用)
+  -XX:MaxPermSize   #设置永久代最大空间大小(jdk1.8已被弃用)
+  -XX:MetaspaceSize #设置元空间初始大小
+  -XX:MaxMetaspaceSize #设置元空间最大大小
 
   -XX:+UseParallelGC  #选择垃圾收集器为并行收集器。此配置仅对年轻代有效。即上述配置下,年轻代使用并发收集,而年老代仍旧使用串行收集。
   -XX:ParallelGCThreads=20  #配置并行收集器的线程数,即:同时多少个线程一起进行垃圾回收。此值最好配置与处理器数目相等。
@@ -233,11 +216,33 @@ ENV JAVA_OPTS="\
 -XX:GCLogFileSize=10M"
 ```
 
-### 常用组合
+## 内存分配和回收策略
 
-|      Young      |       Old       |                JVM Option                |
-| :-------------: | :-------------: | :--------------------------------------: |
-|     Serial      |     Serial      |            -XX:+UserSerialGC             |
-|    Parallel     | Parallel/Serial | -XX:+UseParallelGC -XX:+UseParallelOldGC |
-| Serial/Parallel |       CMS       |   -XX:+UseParNewGC -XX:+UseConcSweepGC   |
-|       G1        |        -        |               -XX:+UseG1GC               |
+### 对象优先在 EDAN 区进行分配
+
+大多数情况,新对象优先在 edan 区进行分配. 当 edan 区没有足够空间时,jvm 发起一次 minor gc.
+
+### 大对象直接进入老年代
+
+大对象是指需要连续的内存空间.例如大的字符串或者元素数量很大的数组.如果大对象进行复制的话,会浪费很多内存空间. 所以 HotSpot 提供了`-XX:PretenureSizeThreshold`参数,指定大对象直接分配在老年代中,避免了在年轻代和 survivor 区之间来回复制.
+
+_`-XX:PretenureSizeThreshold`参数只对 Serial 和 ParNew 两款新生代回收器有效_
+
+### 长期存活的对象进入老年代
+
+因为 HotSpot 大部分回收器都采用的分代回收,那内存回收时必须能决策哪些对象存放在新生代,哪些存放在老年代.虚拟机为每个对象设置了一个年龄,当对象在新生代经过一次 minor gc 时,年龄+1.当熬过一定年龄时(默认是 15,可用`-XX:MaxTenuringThreshold=15`配置),就会晋升到老年代中.
+
+### 动态对象年龄判定
+
+为了能更好的适应不同程序的内存情况,HotSpot 并不是永远要求对象必须到年龄才晋升到老年代.**如果 Survivor 区中所有对象大小总和大于 Survivor 空间的一半,则年龄大于或等于该年龄的对象可以直接进入老年代.**
+
+### 空间分配担保:
+
+在发生 Minor GC 之前
+
+1.  虚拟机必须先检查老年代最大可用的连续空间是否大于新生代所有对象总空间,如果这个条件成立,那这一次 Minor GC 可以确保是安全的.
+2.  如果不成立,则虚拟机会先查看`-XX:HandlePromotionFailure` 参数的设置值是否允许担保失败(Handle Promotion Failure);
+3.  如果允许,那会继续检查老年代最大可用的连续空间是否大于历次晋升到老年代对象的平均大小,如果大于,将尝试进行一次 Minor GC,尽这次 Minor GC 是有风险的;
+4.  如果小于,或者-XX：HandlePromotionFailure 设置不允许冒险,那这时就要改为进行一次 Full GC.
+
+_在 JDK 6 Update24 之后,这个参数就没有用了.此版本之后的规则变为只要老年代的连续空间大于新生代对象总大小或者历次晋升的平均大小,就会进行 Minor GC,否则进行 Full GC._
