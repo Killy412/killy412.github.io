@@ -207,6 +207,32 @@ java -XX:+PrintFlagsFinal -version | grep HeapSize
 
   ```
 
+### 服务端常用组合
+
+```
+ENV JAVA_OPTS="\
+-server \
+-Xmx256m \
+-Xms256m \
+-Xmn128m \
+-XX:SurvivorRatio=8 \
+-XX:MetaspaceSize=64m \
+-XX:MaxMetaspaceSize=128m \
+-XX:+UseParallelGC \
+-XX:ParallelGCThreads=4 \
+-XX:+UseParallelOldGC \
+-XX:+UseAdaptiveSizePolicy \
+-XX:+PrintGCDetails \
+-XX:+PrintTenuringDistribution \
+-XX:+PrintGCTimeStamps \
+-XX:+HeapDumpOnOutOfMemoryError \
+-XX:HeapDumpPath=/ \
+-Xloggc:/gc.log \
+-XX:+UseGCLogFileRotation \
+-XX:NumberOfGCLogFiles=5 \
+-XX:GCLogFileSize=10M"
+```
+
 ### 常用组合
 
 |      Young      |       Old       |                JVM Option                |

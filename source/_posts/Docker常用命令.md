@@ -138,6 +138,17 @@ docker logout
 
 ```shell
 docker run -it -d --name test --add-host=hostname:127.0.0.1 test:latest
+                              --add-host=<yuming>:<ip> --add-host=<yuming>:<ip>
+                              --add-host="yuming yuming2":<ip>
+```
+--add-host 最好在--name参数后面
+
+### 在`docker-compose.yml`文件中添加
+通过配置参数extra_hosts来实现
+```
+extra_hosts:
+ - "somehost:162.242.195.82"
+ - "otherhost:50.31.209.229"
 ```
 
 ## docker 安装 redis
