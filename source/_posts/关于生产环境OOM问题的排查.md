@@ -16,6 +16,8 @@ categories:
 
 现在主要就是找到创建这个DataResultSet对象时的代码处.
 
+<!--more-->
+
 ## 过程
 
 - 首先使用启动参数,把jvm发生oom的时候堆栈快照转储下来.
