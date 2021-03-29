@@ -33,17 +33,17 @@ categories:
    ```
 
 - 启动之后装入对应快照文件,首先排查的是导致oom的线程栈信息. 但是根本没有自己写的代码,都是源码相关的.然后又看了其他的堆栈快照,发现每次oom时的线程栈都不一样,所以这时怀疑问题不是出在oom时的线程这,可能只是压死骆驼的最后一根稻草. 然后查看快照中的大对象信息.感觉比较可疑的就是这几个`DataResultSet`对象.但是通过jvisualvm工具查看不到对应的代码处.所以后来上网发个[求教贴](https://www.v2ex.com/t/765651#reply17)是不是思路不对.
-   ![](../images/20210328203556.png)
+   ![](https://cdn.jsdelivr.net/gh/Killy412/killy412.github.io@hexo/source/images/20210328203556.png)
 
    帖子中回复基本是通过MAT工具查看或者通过慢sql的角度去排查.但是生产环境不知道有没有把druid放开.所以就先通过mat去排查了.
 
 - 因为第一次使用mat排查oom问题,所以找了两篇教程,感觉还挺好. [关于MAT的基本概念](https://juejin.cn/post/6908665391136899079#heading-4),其中关于`Shallow Heap`和`Retained Heap`等概念的讲解挺实用的.要不刚开始打开的时候一头雾水,不知道从哪下手.还有[根据大对象快速定位代码](https://blog.csdn.net/lnkToKing/article/details/103533995)的教程,就是根据这个教程定位到代码的.
 
   mat打开之后有`Leak Suspects`,问题怀疑点,第一个怀疑点就是关于`DataResultSet`对象的.看来之前的猜测是正确的.然后点进去追踪调用栈帧.下面是追踪过程.
-  ![](../images/1.png)
-  ![](../images/2.png)
-  ![](../images/3.png)
-  ![](../images/4.png)
+  ![](https://cdn.jsdelivr.net/gh/Killy412/killy412.github.io@hexo/source/images/1.png)
+  ![](https://cdn.jsdelivr.net/gh/Killy412/killy412.github.io@hexo/source/images/2.png)
+  ![](https://cdn.jsdelivr.net/gh/Killy412/killy412.github.io@hexo/source/images/3.png)
+  ![](https://cdn.jsdelivr.net/gh/Killy412/killy412.github.io@hexo/source/images/4.png)
   最后就看到了`DataResultSet`对象创建的整个调用栈,在栈中找到自己项目包的代码.查看有没有问题.
 
 ## 结果
