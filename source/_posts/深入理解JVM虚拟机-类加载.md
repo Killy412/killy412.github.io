@@ -27,6 +27,8 @@ categories: "JVM"
 
   **遇到new/getstatic/putstatic/invokestatic才会执行类的初始化过程.**
 
+<!--more-->
+
 ### 什么时候会执行类加载的过程
 
 - 遇到new/getstatic/putstatic/invokestatic指令
