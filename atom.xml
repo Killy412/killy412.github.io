@@ -6,7 +6,7 @@
   <link href="https://killy412.com/atom.xml" rel="self"/>
   
   <link href="https://killy412.com/"/>
-  <updated>2021-09-26T14:08:52.770Z</updated>
+  <updated>2021-12-13T15:30:22.580Z</updated>
   <id>https://killy412.com/</id>
   
   <author>
@@ -17,11 +17,31 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>胃癌术后饮食</title>
+    <link href="https://killy412.com/2021/12/13/%E8%83%83%E7%99%8C%E6%9C%AF%E5%90%8E%E9%A5%AE%E9%A3%9F/"/>
+    <id>https://killy412.com/2021/12/13/%E8%83%83%E7%99%8C%E6%9C%AF%E5%90%8E%E9%A5%AE%E9%A3%9F/</id>
+    <published>2021-12-13T15:27:41.000Z</published>
+    <updated>2021-12-13T15:30:22.580Z</updated>
+    
+    
+    <summary type="html">&lt;h3 id=&quot;饮食&quot;&gt;&lt;a href=&quot;#饮食&quot; class=&quot;headerlink&quot; title=&quot;饮食&quot;&gt;&lt;/a&gt;饮食&lt;/h3&gt;&lt;p&gt;术后初期可以汤类，之后一周一周观察，流食慢慢变稠一些，同时可以用破壁机做少量果泥，每天一口两口的加量。差不多一个多月就可以吃软面条了。馒头泡浓菜汤里弄烂也可以。深海鱼，没刺那种，做粥。最好是小米，实在吃烦的话可以换成大米。藕粉也不错。所有汤啊，粥啊，都加蛋白粉。术后初期忌食牛奶、豆类制品，容易胀气。&lt;/p&gt;
+&lt;p&gt;重点提一下，破壁机有超高利用率！比如炖好的排骨淮山药，加少量汤，加馒头，打碎，浓稠的东西，每天逐渐加量吃。&lt;/p&gt;
+&lt;p&gt;最好是馒头，不要米饭，因为馒头发酵过，好消化利吸收。&lt;/p&gt;
+&lt;p&gt;但是，只喝汤肯定不行！只喝汤肯定不行！！只喝汤肯定不行！！！要肉，菜，主食尽量均衡！&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="生活" scheme="https://killy412.com/tags/%E7%94%9F%E6%B4%BB/"/>
+    
+  </entry>
+  
+  <entry>
     <title>全新服务器环境搭建(Docker+jre+mysql+nginx)</title>
     <link href="https://killy412.com/2021/07/02/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/"/>
     <id>https://killy412.com/2021/07/02/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</id>
     <published>2021-07-02T09:53:47.000Z</published>
-    <updated>2021-09-26T14:08:52.770Z</updated>
+    <updated>2021-09-27T14:18:40.562Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;全新服务器环境搭建-Docker-jre-mysql-nginx&quot;&gt;&lt;a href=&quot;#全新服务器环境搭建-Docker-jre-mysql-nginx&quot; class=&quot;headerlink&quot; title=&quot;全新服务器环境搭建(Docker+jre+mysql+nginx)&quot;&gt;&lt;/a&gt;全新服务器环境搭建(Docker+jre+mysql+nginx)&lt;/h2&gt;&lt;h3 id=&quot;一-Docker安装&quot;&gt;&lt;a href=&quot;#一-Docker安装&quot; class=&quot;headerlink&quot; title=&quot;一. Docker安装&quot;&gt;&lt;/a&gt;一. Docker安装&lt;/h3&gt;&lt;ol&gt;
@@ -444,27 +464,6 @@
     
     
     <category term="Docker" scheme="https://killy412.com/tags/Docker/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>分布式理论</title>
-    <link href="https://killy412.com/2020/11/08/%E5%88%86%E5%B8%83%E5%BC%8F%E7%90%86%E8%AE%BA/"/>
-    <id>https://killy412.com/2020/11/08/%E5%88%86%E5%B8%83%E5%BC%8F%E7%90%86%E8%AE%BA/</id>
-    <published>2020-11-08T13:18:07.000Z</published>
-    <updated>2021-08-24T14:58:29.886Z</updated>
-    
-    
-    <summary type="html">&lt;h4 id=&quot;CAP-理论&quot;&gt;&lt;a href=&quot;#CAP-理论&quot; class=&quot;headerlink&quot; title=&quot;CAP 理论&quot;&gt;&lt;/a&gt;CAP 理论&lt;/h4&gt;&lt;blockquote&gt;
-&lt;p&gt;CAP 原则又称 CAP 定理，指的是在一个分布式系统中，Consistency（一致性）、 Availability（可用性）、Partition tolerance（分区容错性）这三个基本需求，最多只能同时满足其中的 2 个。&lt;/p&gt;
-&lt;/blockquote&gt;</summary>
-    
-    
-    
-    <category term="分布式" scheme="https://killy412.com/categories/%E5%88%86%E5%B8%83%E5%BC%8F/"/>
-    
-    
-    <category term="分布式" scheme="https://killy412.com/tags/%E5%88%86%E5%B8%83%E5%BC%8F/"/>
     
   </entry>
   
