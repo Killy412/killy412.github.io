@@ -21,20 +21,21 @@
     var CONFIG = {"hostname":"killy412.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="准备环境安装依赖开发部署工具 build_chain.sh脚本依赖于openssl, curl，使用下面的指令安装。 若为CentOS，将下面命令中的apt替换为yum执行即可。macOS执行brew install openssl curl即可（macOS自带的openssl指令选项不同，请执行安装标准openssl）。 1234# ubuntu环境安装依赖sudo apt install -y">
+  <meta name="description" content="安装Clash 官方下载,选择一个合适电脑架构的.  解压缩,并且赋予执行权限 1234cdmkdir clash &amp;&amp; cd clashgzip clash.gzsudo chmod +x clash 下载配置文件 1wget -O config.yaml [订阅链接] 启动之后就可以上网了 1.&#x2F;clash -d .  配置systemd服务,并且自启动. 新建脚本 vim &#x2F;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="快速搭建单群组FISCO BCOS联盟链">
-<meta property="og:url" content="https://killy412.com/2020/11/11/%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E5%8D%95%E7%BE%A4%E7%BB%84FISCO-BCOS%E8%81%94%E7%9B%9F%E9%93%BE/index.html">
+<meta property="og:title" content="Linux使用Clash科学上网">
+<meta property="og:url" content="https://killy412.com/2022/01/21/Linux%E4%BD%BF%E7%94%A8Clash%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/index.html">
 <meta property="og:site_name" content="ki&#39;s blog">
-<meta property="og:description" content="准备环境安装依赖开发部署工具 build_chain.sh脚本依赖于openssl, curl，使用下面的指令安装。 若为CentOS，将下面命令中的apt替换为yum执行即可。macOS执行brew install openssl curl即可（macOS自带的openssl指令选项不同，请执行安装标准openssl）。 1234# ubuntu环境安装依赖sudo apt install -y">
+<meta property="og:description" content="安装Clash 官方下载,选择一个合适电脑架构的.  解压缩,并且赋予执行权限 1234cdmkdir clash &amp;&amp; cd clashgzip clash.gzsudo chmod +x clash 下载配置文件 1wget -O config.yaml [订阅链接] 启动之后就可以上网了 1.&#x2F;clash -d .  配置systemd服务,并且自启动. 新建脚本 vim &#x2F;">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-11-11T05:15:56.000Z">
-<meta property="article:modified_time" content="2021-08-24T14:58:29.886Z">
+<meta property="article:published_time" content="2022-01-21T14:57:59.000Z">
+<meta property="article:modified_time" content="2022-01-21T16:05:30.068Z">
 <meta property="article:author" content="船夫">
-<meta property="article:tag" content="区块链">
+<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="科学上网">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://killy412.com/2020/11/11/%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E5%8D%95%E7%BE%A4%E7%BB%84FISCO-BCOS%E8%81%94%E7%9B%9F%E9%93%BE/">
+<link rel="canonical" href="https://killy412.com/2022/01/21/Linux%E4%BD%BF%E7%94%A8Clash%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/">
 
 
 <script id="page-configurations">
@@ -47,7 +48,7 @@
   };
 </script>
 
-  <title>快速搭建单群组FISCO BCOS联盟链 | ki's blog</title>
+  <title>Linux使用Clash科学上网 | ki's blog</title>
   
 
 
@@ -166,7 +167,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://killy412.com/2020/11/11/%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E5%8D%95%E7%BE%A4%E7%BB%84FISCO-BCOS%E8%81%94%E7%9B%9F%E9%93%BE/">
+    <link itemprop="mainEntityOfPage" href="https://killy412.com/2022/01/21/Linux%E4%BD%BF%E7%94%A8Clash%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpeg">
@@ -179,7 +180,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          快速搭建单群组FISCO BCOS联盟链
+          Linux使用Clash科学上网
         </h1>
 
         <div class="post-meta">
@@ -189,7 +190,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2020-11-11 13:15:56" itemprop="dateCreated datePublished" datetime="2020-11-11T13:15:56+08:00">2020-11-11</time>
+              <time title="创建时间：2022-01-21 22:57:59" itemprop="dateCreated datePublished" datetime="2022-01-21T22:57:59+08:00">2022-01-21</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -197,12 +198,12 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/" itemprop="url" rel="index"><span itemprop="name">区块链</span></a>
+                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
                 </span>
             </span>
 
           
-            <span id="/2020/11/11/%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E5%8D%95%E7%BE%A4%E7%BB%84FISCO-BCOS%E8%81%94%E7%9B%9F%E9%93%BE/" class="post-meta-item leancloud_visitors" data-flag-title="快速搭建单群组FISCO BCOS联盟链" title="阅读次数">
+            <span id="/2022/01/21/Linux%E4%BD%BF%E7%94%A8Clash%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/" class="post-meta-item leancloud_visitors" data-flag-title="Linux使用Clash科学上网" title="阅读次数">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
@@ -217,8 +218,8 @@
       </span>
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/2020/11/11/%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E5%8D%95%E7%BE%A4%E7%BB%84FISCO-BCOS%E8%81%94%E7%9B%9F%E9%93%BE/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2020/11/11/%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E5%8D%95%E7%BE%A4%E7%BB%84FISCO-BCOS%E8%81%94%E7%9B%9F%E9%93%BE/" itemprop="commentCount"></span>
+    <a title="valine" href="/2022/01/21/Linux%E4%BD%BF%E7%94%A8Clash%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2022/01/21/Linux%E4%BD%BF%E7%94%A8Clash%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -233,35 +234,35 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h3 id="准备环境"><a href="#准备环境" class="headerlink" title="准备环境"></a>准备环境</h3><h4 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h4><p>开发部署工具 build_chain.sh脚本依赖于openssl, curl，使用下面的指令安装。 若为CentOS，将下面命令中的apt替换为yum执行即可。macOS执行brew install openssl curl即可（macOS自带的openssl指令选项不同，请执行安装标准openssl）。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ubuntu环境安装依赖</span></span><br><span class="line">sudo apt install -y openssl curl  </span><br><span class="line"><span class="comment"># centos环境安装依赖</span></span><br><span class="line">sudo yum install -y openssl openssl-devel </span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<h4 id="创建操作目录"><a href="#创建操作目录" class="headerlink" title="创建操作目录"></a>创建操作目录</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~ &amp;&amp; mkdir -p fisco &amp;&amp; <span class="built_in">cd</span> fisco</span><br></pre></td></tr></table></figure>
-<h4 id="下载build-chain-sh脚本"><a href="#下载build-chain-sh脚本" class="headerlink" title="下载build_chain.sh脚本"></a>下载build_chain.sh脚本</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -<span class="comment">#LO https://github.com/FISCO-BCOS/FISCO-BCOS/releases/download/v2.6.0/build_chain.sh &amp;&amp; chmod u+x build_chain.sh</span></span><br></pre></td></tr></table></figure>
-<h3 id="生成一条单群组4节点的FISCO链"><a href="#生成一条单群组4节点的FISCO链" class="headerlink" title="生成一条单群组4节点的FISCO链"></a>生成一条单群组4节点的FISCO链</h3><p>在fisco目录下执行下面的指令，生成一条单群组4节点的FISCO链.请确保机器的 30300-30303，20200-20203，8545-8548端口没有被占用。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash build_chain.sh -l 127.0.0.1:4 -p 30300,20200,8545 [参数]</span><br></pre></td></tr></table></figure>
+        <h2 id="安装Clash"><a href="#安装Clash" class="headerlink" title="安装Clash"></a>安装Clash</h2><ol>
+<li><p><a target="_blank" rel="noopener" href="https://github.com/Dreamacro/clash/releases">官方下载</a>,选择一个合适电脑架构的.</p>
+</li>
+<li><p>解压缩,并且赋予执行权限</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd</span><br><span class="line">mkdir clash &amp;&amp; cd clash</span><br><span class="line">gzip clash.gz</span><br><span class="line">sudo chmod +x clash</span><br></pre></td></tr></table></figure></li>
+<li><p>下载配置文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -O config.yaml [订阅链接]</span><br></pre></td></tr></table></figure></li>
+<li><p>启动之后就可以上网了</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./clash -d . </span><br></pre></td></tr></table></figure></li>
+<li><p>配置systemd服务,并且自启动. 新建脚本 <code>vim /etc/systemd/system/clash.service</code>,内容如下</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=clash daemon</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">Type=simple</span><br><span class="line">User=root</span><br><span class="line">ExecStart=~/clash/clash -d ~/clash</span><br><span class="line">Restart=on-failure</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
+<p>启动服务</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">systemctl daemon-reload</span><br><span class="line">systemctl enable clash.service</span><br><span class="line">systemctl start clash.service</span><br></pre></td></tr></table></figure>
+<h2 id="定时更新订阅"><a href="#定时更新订阅" class="headerlink" title="定时更新订阅"></a>定时更新订阅</h2></li>
+</ol>
 <ul>
-<li>参数<ul>
-<li><code>-i</code> 默认<code>127.0.0.1</code>,加上参数<code>0.0.0.0</code>,使外网可以访问</li>
-<li><code>-p</code> 指定节点的起始端口,每个节点占用三个端口,分别是p2p,channel,jsonrpc使用,分割端口,必须指定三个端口.同一个IP下的不同节点所使用端口从起始端口递增.</li>
-<li><code>-l</code> 用于指定要生成的链的IP列表以及每个IP下的节点数,以逗号分隔</li>
-</ul>
+<li><p>创建定时任务脚本 <code>vim ~/clash/update-config.sh</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 设置clash路径</span></span><br><span class="line">clash_path=&quot;~/clash&quot;</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 停止clash</span></span><br><span class="line">systemctl stop clash.service</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 取消代理</span></span><br><span class="line">unset https_proxy</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 如果配置文件存在，备份后下载，如果不存在，直接下载</span></span><br><span class="line">if [ -e $clash_path/config.yaml ]; then</span><br><span class="line">	mv $clash_path/config.yaml $clash_path/configbackup.yaml</span><br><span class="line">	wget -O $clash_path/config.yaml &quot;[订阅链接]&quot;</span><br><span class="line">else</span><br><span class="line">	wget -O $clash_path/config.yaml &quot;[订阅链接]&quot;</span><br><span class="line">fi</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 重启clash</span></span><br><span class="line">systemctl restart clash.service</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 重设代理</span></span><br><span class="line">export https_proxy=&quot;http://127.0.0.1:7890&quot;</span><br></pre></td></tr></table></figure></li>
+<li><p>配置crontab任务</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo crontab -e </span><br><span class="line"><span class="meta">#</span><span class="bash"> 分钟 小时 日 月 年 comm</span></span><br><span class="line">0 0 1,15 * * sh ~/clash/update-config.sh</span><br><span class="line">systemctl restart cron.service</span><br></pre></td></tr></table></figure>
+<h2 id="WebUI使用"><a href="#WebUI使用" class="headerlink" title="WebUI使用"></a>WebUI使用</h2></li>
+<li><p>clone dashboard项目</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/Dreamacro/clash-dashboard.git</span><br><span class="line">cd clash-dashboard/</span><br><span class="line">git checkout -b gh-pages origin/gh-pages</span><br></pre></td></tr></table></figure></li>
+<li><p>更改<code>config.yaml</code>文件中 <code>external-ui</code> 属性为上一步clone的dashboard文件路径.</p>
+</li>
+<li><p><code>systemctl restart clash.service</code> 重启之后,访问<code>localhose:9090/ui</code> 就可以看到clash相关配置界面了</p>
 </li>
 </ul>
-<p>命令执行成功会输出All completed。如果执行出错，请检查nodes/build.log文件中的错误信息。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">Checking fisco-bcos binary...</span><br><span class="line">Binary check passed.</span><br><span class="line">==============================================================</span><br><span class="line">Generating CA key...</span><br><span class="line">==============================================================</span><br><span class="line">Generating keys ...</span><br><span class="line">Processing IP:127.0.0.1 Total:4 Agency:agency Groups:1</span><br><span class="line">==============================================================</span><br><span class="line">Generating configurations...</span><br><span class="line">Processing IP:127.0.0.1 Total:4 Agency:agency Groups:1</span><br><span class="line">==============================================================</span><br><span class="line">[INFO] Execute the download_console.sh script <span class="keyword">in</span> directory named by IP to get FISCO-BCOS console.</span><br><span class="line">e.g.  bash /home/ubuntu/fisco/nodes/127.0.0.1/download_console.sh</span><br><span class="line">==============================================================</span><br><span class="line">[INFO] FISCO-BCOS Path   : bin/fisco-bcos</span><br><span class="line">[INFO] Start Port        : 30300 20200 8545</span><br><span class="line">[INFO] Server IP         : 127.0.0.1:4</span><br><span class="line">[INFO] Output Dir        : /home/ubuntu/fisco/nodes</span><br><span class="line">[INFO] CA Key Path       : /home/ubuntu/fisco/nodes/cert/ca.key</span><br><span class="line">==============================================================</span><br><span class="line">[INFO] All completed. Files <span class="keyword">in</span> /home/ubuntu/fisco/nodes</span><br></pre></td></tr></table></figure>
 
-<h3 id="启动FISCO-BCOS链"><a href="#启动FISCO-BCOS链" class="headerlink" title="启动FISCO BCOS链"></a>启动FISCO BCOS链</h3><p>启动所有节点</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash nodes/127.0.0.1/start_all.sh</span><br></pre></td></tr></table></figure>
-<p>停止所有节点</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash nodes/127.0.0.1/stop_all.sh</span><br></pre></td></tr></table></figure>
-<p>启动成功会输出类似下面内容的响应。否则请使用netstat -an | grep tcp检查机器的30300<del>30303，20200</del>20203，8545~8548端口是否被占用。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">try to start node0</span><br><span class="line">try to start node1</span><br><span class="line">try to start node2</span><br><span class="line">try to start node3</span><br><span class="line"> node1 start successfully</span><br><span class="line"> node2 start successfully</span><br><span class="line"> node0 start successfully</span><br><span class="line"> node3 start successfully</span><br></pre></td></tr></table></figure>
-<p>检查进程是否启动</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -ef | grep -v grep | grep fisco-bcos</span><br></pre></td></tr></table></figure>
-<p>正常情况会有类似下面的输出； 如果进程数不为4，则进程没有启动（一般是端口被占用导致的）</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">fisco       5453     1  1 17:11 pts/0    00:00:02 /home/ubuntu/fisco/nodes/127.0.0.1/node0/../fisco-bcos -c config.ini</span><br><span class="line">fisco       5459     1  1 17:11 pts/0    00:00:02 /home/ubuntu/fisco/nodes/127.0.0.1/node1/../fisco-bcos -c config.ini</span><br><span class="line">fisco       5464     1  1 17:11 pts/0    00:00:02 /home/ubuntu/fisco/nodes/127.0.0.1/node2/../fisco-bcos -c config.ini</span><br><span class="line">fisco       5476     1  1 17:11 pts/0    00:00:02 /home/ubuntu/fisco/nodes/127.0.0.1/node3/../fisco-bcos -c config.ini</span><br></pre></td></tr></table></figure>
-<h3 id="文章参考FISCO-BCOS官方文档"><a href="#文章参考FISCO-BCOS官方文档" class="headerlink" title="文章参考FISCO BCOS官方文档"></a>文章参考<a target="_blank" rel="noopener" href="https://fisco-bcos-documentation.readthedocs.io/zh_CN/latest/docs/installation.html">FISCO BCOS官方文档</a></h3>
     </div>
 
     
@@ -271,7 +272,8 @@
       <footer class="post-footer">
           
           <div class="post-tags">
-              <a href="/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/" rel="tag"><i class="fa fa-tag"></i> 区块链</a>
+              <a href="/tags/Linux/" rel="tag"><i class="fa fa-tag"></i> Linux</a>
+              <a href="/tags/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/" rel="tag"><i class="fa fa-tag"></i> 科学上网</a>
           </div>
 
         
@@ -280,13 +282,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/11/09/Docker%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" rel="prev" title="Docker常用命令">
-      <i class="fa fa-chevron-left"></i> Docker常用命令
+    <a href="/2021/12/13/%E8%83%83%E7%99%8C%E6%9C%AF%E5%90%8E%E9%A5%AE%E9%A3%9F/" rel="prev" title="胃癌术后饮食">
+      <i class="fa fa-chevron-left"></i> 胃癌术后饮食
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2020/11/11/SpringBoot-%E6%89%8B%E5%8A%A8%E6%8E%A7%E5%88%B6%E4%BA%8B%E5%8A%A1/" rel="next" title="SpringBoot 手动控制事务">
-      SpringBoot 手动控制事务 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -346,7 +345,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%86%E5%A4%87%E7%8E%AF%E5%A2%83"><span class="nav-number">1.</span> <span class="nav-text">准备环境</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E4%BE%9D%E8%B5%96"><span class="nav-number">1.1.</span> <span class="nav-text">安装依赖</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E6%93%8D%E4%BD%9C%E7%9B%AE%E5%BD%95"><span class="nav-number">1.2.</span> <span class="nav-text">创建操作目录</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BDbuild-chain-sh%E8%84%9A%E6%9C%AC"><span class="nav-number">1.3.</span> <span class="nav-text">下载build_chain.sh脚本</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%9F%E6%88%90%E4%B8%80%E6%9D%A1%E5%8D%95%E7%BE%A4%E7%BB%844%E8%8A%82%E7%82%B9%E7%9A%84FISCO%E9%93%BE"><span class="nav-number">2.</span> <span class="nav-text">生成一条单群组4节点的FISCO链</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%AF%E5%8A%A8FISCO-BCOS%E9%93%BE"><span class="nav-number">3.</span> <span class="nav-text">启动FISCO BCOS链</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E7%AB%A0%E5%8F%82%E8%80%83FISCO-BCOS%E5%AE%98%E6%96%B9%E6%96%87%E6%A1%A3"><span class="nav-number">4.</span> <span class="nav-text">文章参考FISCO BCOS官方文档</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85Clash"><span class="nav-number">1.</span> <span class="nav-text">安装Clash</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9A%E6%97%B6%E6%9B%B4%E6%96%B0%E8%AE%A2%E9%98%85"><span class="nav-number">2.</span> <span class="nav-text">定时更新订阅</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#WebUI%E4%BD%BF%E7%94%A8"><span class="nav-number">3.</span> <span class="nav-text">WebUI使用</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

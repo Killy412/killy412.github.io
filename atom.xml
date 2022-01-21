@@ -6,7 +6,7 @@
   <link href="https://killy412.com/atom.xml" rel="self"/>
   
   <link href="https://killy412.com/"/>
-  <updated>2021-12-13T15:30:22.580Z</updated>
+  <updated>2022-01-21T16:05:30.068Z</updated>
   <id>https://killy412.com/</id>
   
   <author>
@@ -17,11 +17,39 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Linux使用Clash科学上网</title>
+    <link href="https://killy412.com/2022/01/21/Linux%E4%BD%BF%E7%94%A8Clash%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/"/>
+    <id>https://killy412.com/2022/01/21/Linux%E4%BD%BF%E7%94%A8Clash%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/</id>
+    <published>2022-01-21T14:57:59.000Z</published>
+    <updated>2022-01-21T16:05:30.068Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;安装Clash&quot;&gt;&lt;a href=&quot;#安装Clash&quot; class=&quot;headerlink&quot; title=&quot;安装Clash&quot;&gt;&lt;/a&gt;安装Clash&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="Linux" scheme="https://killy412.com/categories/Linux/"/>
+    
+    
+    <category term="Linux" scheme="https://killy412.com/tags/Linux/"/>
+    
+    <category term="科学上网" scheme="https://killy412.com/tags/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/"/>
+    
+  </entry>
+  
+  <entry>
     <title>胃癌术后饮食</title>
     <link href="https://killy412.com/2021/12/13/%E8%83%83%E7%99%8C%E6%9C%AF%E5%90%8E%E9%A5%AE%E9%A3%9F/"/>
     <id>https://killy412.com/2021/12/13/%E8%83%83%E7%99%8C%E6%9C%AF%E5%90%8E%E9%A5%AE%E9%A3%9F/</id>
     <published>2021-12-13T15:27:41.000Z</published>
-    <updated>2021-12-13T15:30:22.580Z</updated>
+    <updated>2021-12-25T14:11:01.228Z</updated>
     
     
     <summary type="html">&lt;h3 id=&quot;饮食&quot;&gt;&lt;a href=&quot;#饮食&quot; class=&quot;headerlink&quot; title=&quot;饮食&quot;&gt;&lt;/a&gt;饮食&lt;/h3&gt;&lt;p&gt;术后初期可以汤类，之后一周一周观察，流食慢慢变稠一些，同时可以用破壁机做少量果泥，每天一口两口的加量。差不多一个多月就可以吃软面条了。馒头泡浓菜汤里弄烂也可以。深海鱼，没刺那种，做粥。最好是小米，实在吃烦的话可以换成大米。藕粉也不错。所有汤啊，粥啊，都加蛋白粉。术后初期忌食牛奶、豆类制品，容易胀气。&lt;/p&gt;
@@ -445,25 +473,6 @@
     <category term="Docker" scheme="https://killy412.com/tags/Docker/"/>
     
     <category term="运维" scheme="https://killy412.com/tags/%E8%BF%90%E7%BB%B4/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>docker设置时区</title>
-    <link href="https://killy412.com/2020/11/09/Docker%E8%AE%BE%E7%BD%AE%E6%97%B6%E5%8C%BA/"/>
-    <id>https://killy412.com/2020/11/09/Docker%E8%AE%BE%E7%BD%AE%E6%97%B6%E5%8C%BA/</id>
-    <published>2020-11-09T13:59:06.000Z</published>
-    <updated>2021-08-24T14:58:29.886Z</updated>
-    
-    
-    <summary type="html">&lt;h3 id=&quot;dockerfile-文件中添加如下两句&quot;&gt;&lt;a href=&quot;#dockerfile-文件中添加如下两句&quot; class=&quot;headerlink&quot; title=&quot;dockerfile 文件中添加如下两句&quot;&gt;&lt;/a&gt;dockerfile 文件中添加如下两句&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;RUN &lt;span class=&quot;built_in&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&amp;quot;Asia/Shanghai&amp;quot;&lt;/span&gt; &amp;gt; /etc/timezone&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;RUN dpkg-reconfigure -f noninteractive tzdata&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
-    
-    
-    
-    <category term="Docker" scheme="https://killy412.com/categories/Docker/"/>
-    
-    
-    <category term="Docker" scheme="https://killy412.com/tags/Docker/"/>
     
   </entry>
   

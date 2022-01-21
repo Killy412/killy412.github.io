@@ -162,6 +162,109 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://killy412.com/2022/01/21/Linux%E4%BD%BF%E7%94%A8Clash%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="船夫">
+      <meta itemprop="description" content="今天周二">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ki's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/01/21/Linux%E4%BD%BF%E7%94%A8Clash%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/" class="post-title-link" itemprop="url">Linux使用Clash科学上网</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-01-21 22:57:59" itemprop="dateCreated datePublished" datetime="2022-01-21T22:57:59+08:00">2022-01-21</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/2022/01/21/Linux%E4%BD%BF%E7%94%A8Clash%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/" class="post-meta-item leancloud_visitors" data-flag-title="Linux使用Clash科学上网" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="安装Clash"><a href="#安装Clash" class="headerlink" title="安装Clash"></a>安装Clash</h2><ol>
+<li><p><a target="_blank" rel="noopener" href="https://github.com/Dreamacro/clash/releases">官方下载</a>,选择一个合适电脑架构的.</p>
+</li>
+<li><p>解压缩,并且赋予执行权限</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd</span><br><span class="line">mkdir clash &amp;&amp; cd clash</span><br><span class="line">gzip clash.gz</span><br><span class="line">sudo chmod +x clash</span><br></pre></td></tr></table></figure></li>
+<li><p>下载配置文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -O config.yaml [订阅链接]</span><br></pre></td></tr></table></figure></li>
+<li><p>启动之后就可以上网了</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./clash -d . </span><br></pre></td></tr></table></figure></li>
+<li><p>配置systemd服务,并且自启动. 新建脚本 <code>vim /etc/systemd/system/clash.service</code>,内容如下</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=clash daemon</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">Type=simple</span><br><span class="line">User=root</span><br><span class="line">ExecStart=~/clash/clash -d ~/clash</span><br><span class="line">Restart=on-failure</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
+<p>启动服务</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">systemctl daemon-reload</span><br><span class="line">systemctl enable clash.service</span><br><span class="line">systemctl start clash.service</span><br></pre></td></tr></table></figure>
+<h2 id="定时更新订阅"><a href="#定时更新订阅" class="headerlink" title="定时更新订阅"></a>定时更新订阅</h2></li>
+</ol>
+<ul>
+<li><p>创建定时任务脚本 <code>vim ~/clash/update-config.sh</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 设置clash路径</span></span><br><span class="line">clash_path=&quot;~/clash&quot;</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 停止clash</span></span><br><span class="line">systemctl stop clash.service</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 取消代理</span></span><br><span class="line">unset https_proxy</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 如果配置文件存在，备份后下载，如果不存在，直接下载</span></span><br><span class="line">if [ -e $clash_path/config.yaml ]; then</span><br><span class="line">	mv $clash_path/config.yaml $clash_path/configbackup.yaml</span><br><span class="line">	wget -O $clash_path/config.yaml &quot;[订阅链接]&quot;</span><br><span class="line">else</span><br><span class="line">	wget -O $clash_path/config.yaml &quot;[订阅链接]&quot;</span><br><span class="line">fi</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 重启clash</span></span><br><span class="line">systemctl restart clash.service</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 重设代理</span></span><br><span class="line">export https_proxy=&quot;http://127.0.0.1:7890&quot;</span><br></pre></td></tr></table></figure></li>
+<li><p>配置crontab任务</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo crontab -e </span><br><span class="line"><span class="meta">#</span><span class="bash"> 分钟 小时 日 月 年 comm</span></span><br><span class="line">0 0 1,15 * * sh ~/clash/update-config.sh</span><br><span class="line">systemctl restart cron.service</span><br></pre></td></tr></table></figure>
+<h2 id="WebUI使用"><a href="#WebUI使用" class="headerlink" title="WebUI使用"></a>WebUI使用</h2></li>
+<li><p>clone dashboard项目</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/Dreamacro/clash-dashboard.git</span><br><span class="line">cd clash-dashboard/</span><br><span class="line">git checkout -b gh-pages origin/gh-pages</span><br></pre></td></tr></table></figure></li>
+<li><p>更改<code>config.yaml</code>文件中 <code>external-ui</code> 属性为上一步clone的dashboard文件路径.</p>
+</li>
+<li><p><code>systemctl restart clash.service</code> 重启之后,访问<code>localhose:9090/ui</code> 就可以看到clash相关配置界面了</p>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://killy412.com/2021/12/13/%E8%83%83%E7%99%8C%E6%9C%AF%E5%90%8E%E9%A5%AE%E9%A3%9F/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -924,89 +1027,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://killy412.com/2021/01/24/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-      <meta itemprop="name" content="船夫">
-      <meta itemprop="description" content="今天周二">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ki's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/01/24/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" class="post-title-link" itemprop="url">Linux常用命令</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-01-24 00:32:11" itemprop="dateCreated datePublished" datetime="2021-01-24T00:32:11+08:00">2021-01-24</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
-                </span>
-            </span>
-
-          
-            <span id="/2021/01/24/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" class="post-meta-item leancloud_visitors" data-flag-title="Linux常用命令" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看某个进程的子进程</span></span><br><span class="line">pstree -p [pid]</span><br><span class="line"><span class="comment"># 查看进程中子线程的资源占用情况</span></span><br><span class="line">top -Hp [pid]</span><br><span class="line">top -n 1 -H -p [pid]</span><br><span class="line"><span class="comment"># 查看磁盘情况</span></span><br><span class="line">df -hl</span><br><span class="line"><span class="comment"># 查找程序</span></span><br><span class="line">ps -ef | grep -v grep | grep fisco-bcos</span><br><span class="line"><span class="comment"># 查看端口占用情况</span></span><br><span class="line">netstat -ano | grep tcp |grep 8545</span><br><span class="line">netstat -tnlp | grep ssh</span><br><span class="line">netstat -anpt| grep ssh</span><br><span class="line"><span class="comment"># 查看端口占用进程</span></span><br><span class="line">lsof -i:&lt;端口&gt;</span><br><span class="line"><span class="comment"># 添加执行权限</span></span><br><span class="line">chmod a+x &lt;文件名&gt;</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/01/24/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1087,7 +1107,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">21</span>
+          <span class="site-state-item-count">22</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1100,7 +1120,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">29</span>
+        <span class="site-state-item-count">30</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -1135,7 +1155,7 @@
 <div class="copyright">
   
   &copy; 2020 – 
-  <span itemprop="copyrightYear">2021</span>
+  <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
