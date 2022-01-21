@@ -21,15 +21,15 @@
     var CONFIG = {"hostname":"killy412.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="安装Clash 官方下载,选择一个合适电脑架构的.  解压缩,并且赋予执行权限 1234cdmkdir clash &amp;&amp; cd clashgzip clash.gzsudo chmod +x clash 下载配置文件 1wget -O config.yaml [订阅链接] 启动之后就可以上网了 1.&#x2F;clash -d .  配置systemd服务,并且自启动. 新建脚本 vim &#x2F;">
+  <meta name="description" content="安装Clash 官方下载,选择一个合适电脑架构的.  解压缩,并且赋予执行权限 1234cdmkdir clash &amp;&amp; cd clashgzip clash.gzsudo chmod +x clash 下载配置文件 1wget -O config.yaml [订阅链接] 配置systemd服务,并且自启动. 新建脚本 vim &#x2F;etc&#x2F;systemd&#x2F;system&#x2F;clash.s">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux使用Clash科学上网">
 <meta property="og:url" content="https://killy412.com/2022/01/21/Linux%E4%BD%BF%E7%94%A8Clash%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/index.html">
 <meta property="og:site_name" content="ki&#39;s blog">
-<meta property="og:description" content="安装Clash 官方下载,选择一个合适电脑架构的.  解压缩,并且赋予执行权限 1234cdmkdir clash &amp;&amp; cd clashgzip clash.gzsudo chmod +x clash 下载配置文件 1wget -O config.yaml [订阅链接] 启动之后就可以上网了 1.&#x2F;clash -d .  配置systemd服务,并且自启动. 新建脚本 vim &#x2F;">
+<meta property="og:description" content="安装Clash 官方下载,选择一个合适电脑架构的.  解压缩,并且赋予执行权限 1234cdmkdir clash &amp;&amp; cd clashgzip clash.gzsudo chmod +x clash 下载配置文件 1wget -O config.yaml [订阅链接] 配置systemd服务,并且自启动. 新建脚本 vim &#x2F;etc&#x2F;systemd&#x2F;system&#x2F;clash.s">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-01-21T14:57:59.000Z">
-<meta property="article:modified_time" content="2022-01-21T16:05:30.068Z">
+<meta property="article:modified_time" content="2022-01-21T16:08:39.392Z">
 <meta property="article:author" content="船夫">
 <meta property="article:tag" content="Linux">
 <meta property="article:tag" content="科学上网">
@@ -241,8 +241,6 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd</span><br><span class="line">mkdir clash &amp;&amp; cd clash</span><br><span class="line">gzip clash.gz</span><br><span class="line">sudo chmod +x clash</span><br></pre></td></tr></table></figure></li>
 <li><p>下载配置文件</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -O config.yaml [订阅链接]</span><br></pre></td></tr></table></figure></li>
-<li><p>启动之后就可以上网了</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./clash -d . </span><br></pre></td></tr></table></figure></li>
 <li><p>配置systemd服务,并且自启动. 新建脚本 <code>vim /etc/systemd/system/clash.service</code>,内容如下</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=clash daemon</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">Type=simple</span><br><span class="line">User=root</span><br><span class="line">ExecStart=~/clash/clash -d ~/clash</span><br><span class="line">Restart=on-failure</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
 <p>启动服务</p>
