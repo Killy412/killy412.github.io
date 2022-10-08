@@ -18,6 +18,9 @@ mkdir clash && cd clash
 gzip clash.gz
 sudo chmod +x clash
 ```
+
+<!--more-->
+
 3. 下载配置文件
 ```shell
 wget -O config.yaml [订阅链接]
