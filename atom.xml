@@ -6,7 +6,7 @@
   <link href="https://killy412.com/atom.xml" rel="self"/>
   
   <link href="https://killy412.com/"/>
-  <updated>2022-01-21T16:08:39.392Z</updated>
+  <updated>2022-10-08T12:56:30.621Z</updated>
   <id>https://killy412.com/</id>
   
   <author>
@@ -21,17 +21,14 @@
     <link href="https://killy412.com/2022/01/21/Linux%E4%BD%BF%E7%94%A8Clash%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/"/>
     <id>https://killy412.com/2022/01/21/Linux%E4%BD%BF%E7%94%A8Clash%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/</id>
     <published>2022-01-21T14:57:59.000Z</published>
-    <updated>2022-01-21T16:08:39.392Z</updated>
+    <updated>2022-10-08T12:56:30.621Z</updated>
     
     
-      
-      
-        
-        
     <summary type="html">&lt;h2 id=&quot;安装Clash&quot;&gt;&lt;a href=&quot;#安装Clash&quot; class=&quot;headerlink&quot; title=&quot;安装Clash&quot;&gt;&lt;/a&gt;安装Clash&lt;/h2&gt;&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;&lt;a</summary>
-        
-      
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/Dreamacro/clash/releases&quot;&gt;官方下载&lt;/a&gt;,选择一个合适电脑架构的.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;解压缩,并且赋予执行权限&lt;/p&gt;
+&lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;cd&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;mkdir clash &amp;amp;&amp;amp; cd clash&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;gzip clash.gz&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;sudo chmod +x clash&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
     
     
     
