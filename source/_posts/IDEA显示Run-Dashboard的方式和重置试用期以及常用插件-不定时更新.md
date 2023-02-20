@@ -27,25 +27,22 @@ categories: "工具"
 ## 常用插件
 
 - Translation 翻译
-- Save Actions 自动格式化代码
 - One Dark Theme 暗黑主题
 - Rainbow Brackets 括号变色
-- Maven Helper maven 工具,可以查看当前 maven 依赖冲突情况
 - Key Promoter X 快捷键设置
+- CodeGlancePro 代码缩略图,和 vscode 文档打开类似
+- mybatisX # mybatis 插件
+- RestfulTool 路径映射搜索工具
+
+- ASM bytecode viewer 字节码查看工具
+- Maven Helper maven 工具,可以查看当前 maven 依赖冲突情况
 - Jrebel 热部署,需要破解
-- CodeGlance 代码缩略图,和 vscode 文档打开类似
 - Alibaba Java Coding Guilelines 阿里编码规约
 - Alibaba cloud Toolkit 云部署工具
-- Free Mybatis plugin mybatis # mybatis 插件
 - GsonFormat json 格式化工具
-- RestfulTool mvc springmvc 路径映射搜索工具
-- RestfulToolkit 同上
 - GenerateAllSetter 一键调用对象的所有 setter 方法
 - GenerateSerialVersionUID 生成 serialVersionUUID
-- ASM bytecode viewer 字节码查看工具
 - .env files support
-- Elasticsearch
-- IDE Eval Reset (idea 重置插件 需要先配置插件仓库地址`https://plugins.zhile.io`)
 
 ## 重置 idea 试用期
 
