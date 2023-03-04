@@ -2,11 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>ik&#39;s blog</title>
   <icon>https://killy412.com/icon.png</icon>
-  <subtitle>独立行走的普通人</subtitle>
+  <subtitle>独自行走的普通人</subtitle>
   <link href="https://killy412.com/atom.xml" rel="self"/>
   
   <link href="https://killy412.com/"/>
-  <updated>2022-10-08T12:56:30.621Z</updated>
+  <updated>2023-03-04T06:19:30.811Z</updated>
   <id>https://killy412.com/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>随笔(一)</title>
+    <link href="https://killy412.com/2023/03/04/%E9%9A%8F%E7%AC%94(%E4%B8%80)/"/>
+    <id>https://killy412.com/2023/03/04/%E9%9A%8F%E7%AC%94(%E4%B8%80)/</id>
+    <published>2023-03-04T06:08:34.000Z</published>
+    <updated>2023-03-04T06:19:30.811Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;想想《黄金时代》中那个令人深思的二十一岁吧：「那一天我二十一岁，在我一生的黄金时代。我有好多奢望。我想爱，想吃，还想在一瞬间变成天上半明半暗的云。后来我才知道，生活就是个缓慢受锤的过程，人一天天老下去，奢望也一天天消失，最后变得像挨了锤的牛一样。可是我过二十一岁生日时没有预见到这一点。我觉得自己会永远生猛下去，什么也锤不我。」&lt;br&gt;今年二十七了，我觉得自己仍然在寻求一个回答：「我不相信天是蓝的，我不相信雷的回声，我不相信梦是假的，我不相信死无报应。」&lt;/p&gt;
+&lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="随笔" scheme="https://killy412.com/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+    <category term="随笔" scheme="https://killy412.com/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+    <category term="摘抄" scheme="https://killy412.com/tags/%E6%91%98%E6%8A%84/"/>
+    
+  </entry>
   
   <entry>
     <title>Linux使用Clash科学上网</title>
@@ -451,27 +474,6 @@
     
     
     <category term="区块链" scheme="https://killy412.com/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Docker常用命令</title>
-    <link href="https://killy412.com/2020/11/09/Docker%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"/>
-    <id>https://killy412.com/2020/11/09/Docker%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</id>
-    <published>2020-11-09T14:03:47.000Z</published>
-    <updated>2021-08-24T14:58:29.886Z</updated>
-    
-    
-    <summary type="html">&lt;h2 id=&quot;安装-Docker-虚拟机&quot;&gt;&lt;a href=&quot;#安装-Docker-虚拟机&quot; class=&quot;headerlink&quot; title=&quot;安装 Docker 虚拟机&quot;&gt;&lt;/a&gt;安装 Docker 虚拟机&lt;/h2&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;yum install -y yum-utils &lt;span class=&quot;comment&quot;&gt;# 安装依赖软件包&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;yum-config-manager --add-repo https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo &lt;span class=&quot;comment&quot;&gt;#添加软件仓库 阿里云docker安装包&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;yum makecache fast  &lt;span class=&quot;comment&quot;&gt;# 启用缓存&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;yum list docker-ce --showduplicates | sort -r  &lt;span class=&quot;comment&quot;&gt;# 查看版本 选择一个&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;yum install docker-ce-&amp;lt;version&amp;gt; -y        &lt;span class=&quot;comment&quot;&gt;# 安装&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;systemctl &lt;span class=&quot;built_in&quot;&gt;enable&lt;/span&gt; docker &lt;span class=&quot;comment&quot;&gt;# 开机自启&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;systemctl start docker  &lt;span class=&quot;comment&quot;&gt;# 启动&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;systemctl stop docker  &lt;span class=&quot;comment&quot;&gt;# 停止&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
-    
-    
-    
-    <category term="Docker" scheme="https://killy412.com/categories/Docker/"/>
-    
-    
-    <category term="Docker" scheme="https://killy412.com/tags/Docker/"/>
-    
-    <category term="运维" scheme="https://killy412.com/tags/%E8%BF%90%E7%BB%B4/"/>
     
   </entry>
   
