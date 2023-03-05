@@ -31,7 +31,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/Killy412/killy-note/master/img/CMS%E6%94%B6%E9%9B%86%E5%99%A8%E8%BF%90%E8%A1%8C%E7%A4%BA%E6%84%8F%E5%9B%BE.jpg">
 <meta property="og:image" content="https://raw.githubusercontent.com/Killy412/killy-note/master/img/G1%E6%94%B6%E9%9B%86%E5%99%A8%E8%BF%90%E8%A1%8C%E7%A4%BA%E6%84%8F%E5%9B%BE.jpg">
 <meta property="article:published_time" content="2021-01-19T13:07:53.000Z">
-<meta property="article:modified_time" content="2021-08-24T14:58:29.890Z">
+<meta property="article:modified_time" content="2023-03-05T09:27:13.859Z">
 <meta property="article:author" content="船夫">
 <meta property="article:tag" content="JVM">
 <meta property="article:tag" content="GC">
@@ -284,6 +284,25 @@
 <p>除此安全点之外，还有一个叫做 “安全区域” 的东西，一个一直在执行的线程可以自己 “走” 到安全点去，可是一个处于 Sleep 或者 Blocked 状态的线程是没办法自己到达安全点中断自己的，我们总不能让 GC 操作一直等着这些个 ”不执行“ 的线程重新被分配资源.对于这种情况,需要使用安全区域来解决.</p>
 <p><strong>安全区域是指在一块代码中,引用关系不会改变.因此在这块区域任何地方进行 GC 操作都是安全的.</strong></p>
 <p>当线程执行到安全区域时,首先会把自己标识为 Safe Region. JVM 发起 GC 时,不会理会这个线程.当线程需要离开安全区域时,首先判断当前 JVM 是否完成 GC Roots 的扫描(或者垃圾收集流程中其他需要中断用户线程的阶段),如果安全,会直接离开.否则会一直等待知道可以离开.</p>
+<h2 id="内存分配和回收策略"><a href="#内存分配和回收策略" class="headerlink" title="内存分配和回收策略"></a>内存分配和回收策略</h2><p>大多数情况,新对象优先在 edan 区进行分配. 当 edan 区没有足够空间时,jvm 发起一次 minor gc.</p>
+<ul>
+<li><p>大对象直接进入老年代<br>大对象是指需要连续的内存空间.例如大的字符串或者元素数量很大的数组.如果大对象进行复制的话,会浪费很多内存空间. 所以 HotSpot 提供了<code>-XX:PretenureSizeThreshold</code>参数,指定大对象直接分配在老年代中,避免了在年轻代和 survivor 区之间来回复制.</p>
+<p><em><code>-XX:PretenureSizeThreshold</code>参数只对 Serial 和 ParNew 两款新生代回收器有效</em></p>
+</li>
+<li><p>长期存活的对象进入老年代<br>因为 HotSpot 大部分回收器都采用的分代回收,那内存回收时必须能决策哪些对象存放在新生代,哪些存放在老年代.虚拟机为每个对象设置了一个年龄,当对象在新生代经过一次 minor gc 时,年龄+1.当熬过一定年龄时(默认是 15,可用<code>-XX:MaxTenuringThreshold=15</code>配置),就会晋升到老年代中.</p>
+</li>
+<li><p>动态对象年龄判定<br>为了能更好的适应不同程序的内存情况,HotSpot 并不是永远要求对象必须到年龄才晋升到老年代.<strong>如果 Survivor 区中所有对象大小总和大于 Survivor 空间的一半,则年龄大于或等于该年龄的对象可以直接进入老年代.</strong></p>
+</li>
+<li><p>空间分配担保:<br>在发生 Minor GC 之前</p>
+<ol>
+<li> 虚拟机必须先检查老年代最大可用的连续空间是否大于新生代所有对象总空间,如果这个条件成立,那这一次 Minor GC 可以确保是安全的.</li>
+<li> 如果不成立,则虚拟机会先查看<code>-XX:HandlePromotionFailure</code> 参数的设置值是否允许担保失败(Handle Promotion Failure);</li>
+<li> 如果允许,那会继续检查老年代最大可用的连续空间是否大于历次晋升到老年代对象的平均大小,如果大于,将尝试进行一次 Minor GC,尽这次 Minor GC 是有风险的;</li>
+<li> 如果小于,或者<code>-XX：HandlePromotionFailure</code> 设置不允许冒险,那这时就要改为进行一次 Full GC.</li>
+</ol>
+<p><em><strong>在 JDK 6 Update24 之后,这个<code>-XX:HandlePromotionFailure</code>参数就没有用了.此版本之后的规则变为只要老年代的连续空间大于新生代对象总大小或者历次晋升的平均大小,就会进行 Minor GC,否则进行 Full GC.</strong></em></p>
+</li>
+</ul>
 <h2 id="垃圾收集器"><a href="#垃圾收集器" class="headerlink" title="垃圾收集器"></a>垃圾收集器</h2><blockquote>
 <p>并发和并行区别:</p>
 <ol>
@@ -381,20 +400,6 @@
 <h3 id="服务端常用组合"><a href="#服务端常用组合" class="headerlink" title="服务端常用组合"></a>服务端常用组合</h3></li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">ENV JAVA_OPTS&#x3D;&quot;\</span><br><span class="line">-server \</span><br><span class="line">-Xmx256m \</span><br><span class="line">-Xms256m \</span><br><span class="line">-Xmn128m \</span><br><span class="line">-XX:SurvivorRatio&#x3D;8 \</span><br><span class="line">-XX:MetaspaceSize&#x3D;64m \</span><br><span class="line">-XX:MaxMetaspaceSize&#x3D;128m \</span><br><span class="line">-XX:+UseParallelGC \</span><br><span class="line">-XX:ParallelGCThreads&#x3D;4 \</span><br><span class="line">-XX:+UseParallelOldGC \</span><br><span class="line">-XX:+UseAdaptiveSizePolicy \</span><br><span class="line">-XX:+PrintGCDetails \</span><br><span class="line">-XX:+PrintTenuringDistribution \</span><br><span class="line">-XX:+PrintGCTimeStamps \</span><br><span class="line">-XX:+HeapDumpOnOutOfMemoryError \</span><br><span class="line">-XX:HeapDumpPath&#x3D;&#x2F; \</span><br><span class="line">-Xloggc:&#x2F;gc.log \</span><br><span class="line">-XX:+UseGCLogFileRotation \</span><br><span class="line">-XX:NumberOfGCLogFiles&#x3D;5 \</span><br><span class="line">-XX:GCLogFileSize&#x3D;10M&quot;</span><br></pre></td></tr></table></figure>
-<h2 id="内存分配和回收策略"><a href="#内存分配和回收策略" class="headerlink" title="内存分配和回收策略"></a>内存分配和回收策略</h2><h3 id="对象优先在-EDAN-区进行分配"><a href="#对象优先在-EDAN-区进行分配" class="headerlink" title="对象优先在 EDAN 区进行分配"></a>对象优先在 EDAN 区进行分配</h3><p>大多数情况,新对象优先在 edan 区进行分配. 当 edan 区没有足够空间时,jvm 发起一次 minor gc.</p>
-<h3 id="大对象直接进入老年代"><a href="#大对象直接进入老年代" class="headerlink" title="大对象直接进入老年代"></a>大对象直接进入老年代</h3><p>大对象是指需要连续的内存空间.例如大的字符串或者元素数量很大的数组.如果大对象进行复制的话,会浪费很多内存空间. 所以 HotSpot 提供了<code>-XX:PretenureSizeThreshold</code>参数,指定大对象直接分配在老年代中,避免了在年轻代和 survivor 区之间来回复制.</p>
-<p><em><code>-XX:PretenureSizeThreshold</code>参数只对 Serial 和 ParNew 两款新生代回收器有效</em></p>
-<h3 id="长期存活的对象进入老年代"><a href="#长期存活的对象进入老年代" class="headerlink" title="长期存活的对象进入老年代"></a>长期存活的对象进入老年代</h3><p>因为 HotSpot 大部分回收器都采用的分代回收,那内存回收时必须能决策哪些对象存放在新生代,哪些存放在老年代.虚拟机为每个对象设置了一个年龄,当对象在新生代经过一次 minor gc 时,年龄+1.当熬过一定年龄时(默认是 15,可用<code>-XX:MaxTenuringThreshold=15</code>配置),就会晋升到老年代中.</p>
-<h3 id="动态对象年龄判定"><a href="#动态对象年龄判定" class="headerlink" title="动态对象年龄判定"></a>动态对象年龄判定</h3><p>为了能更好的适应不同程序的内存情况,HotSpot 并不是永远要求对象必须到年龄才晋升到老年代.<strong>如果 Survivor 区中所有对象大小总和大于 Survivor 空间的一半,则年龄大于或等于该年龄的对象可以直接进入老年代.</strong></p>
-<h3 id="空间分配担保"><a href="#空间分配担保" class="headerlink" title="空间分配担保:"></a>空间分配担保:</h3><p>在发生 Minor GC 之前</p>
-<ol>
-<li> 虚拟机必须先检查老年代最大可用的连续空间是否大于新生代所有对象总空间,如果这个条件成立,那这一次 Minor GC 可以确保是安全的.</li>
-<li> 如果不成立,则虚拟机会先查看<code>-XX:HandlePromotionFailure</code> 参数的设置值是否允许担保失败(Handle Promotion Failure);</li>
-<li> 如果允许,那会继续检查老年代最大可用的连续空间是否大于历次晋升到老年代对象的平均大小,如果大于,将尝试进行一次 Minor GC,尽这次 Minor GC 是有风险的;</li>
-<li> 如果小于,或者-XX：HandlePromotionFailure 设置不允许冒险,那这时就要改为进行一次 Full GC.</li>
-</ol>
-<p><em>在 JDK 6 Update24 之后,这个参数就没有用了.此版本之后的规则变为只要老年代的连续空间大于新生代对象总大小或者历次晋升的平均大小,就会进行 Minor GC,否则进行 Full GC.</em></p>
-
     </div>
 
     
@@ -479,7 +484,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%A4%E6%96%AD%E5%AF%B9%E8%B1%A1%E6%98%AF%E5%90%A6%E5%AD%98%E6%B4%BB"><span class="nav-number">2.</span> <span class="nav-text">判断对象是否存活</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#java1-2-%E4%B9%8B%E5%90%8E-%E5%B0%86%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B%E5%88%86%E4%B8%BA%E4%BB%A5%E4%B8%8B%E5%9B%9B%E7%A7%8D"><span class="nav-number">2.1.</span> <span class="nav-text">java1.2 之后,将引用类型分为以下四种</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E5%8C%BA%E7%9A%84%E5%9B%9E%E6%94%B6"><span class="nav-number">2.2.</span> <span class="nav-text">方法区的回收</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E7%AE%97%E6%B3%95"><span class="nav-number">3.</span> <span class="nav-text">垃圾收集算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HotSpot-%E7%9A%84%E7%AE%97%E6%B3%95%E7%BB%86%E8%8A%82%E5%AE%9E%E7%8E%B0"><span class="nav-number">4.</span> <span class="nav-text">HotSpot 的算法细节实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E5%99%A8"><span class="nav-number">5.</span> <span class="nav-text">垃圾收集器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E7%BB%84%E5%90%88"><span class="nav-number">5.1.</span> <span class="nav-text">常用组合</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GC-%E5%8F%82%E6%95%B0%E7%9B%B8%E5%85%B3"><span class="nav-number">6.</span> <span class="nav-text">GC 参数相关</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%B8%B8%E7%94%A8%E7%BB%84%E5%90%88"><span class="nav-number">6.1.</span> <span class="nav-text">服务端常用组合</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D%E5%92%8C%E5%9B%9E%E6%94%B6%E7%AD%96%E7%95%A5"><span class="nav-number">7.</span> <span class="nav-text">内存分配和回收策略</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E8%B1%A1%E4%BC%98%E5%85%88%E5%9C%A8-EDAN-%E5%8C%BA%E8%BF%9B%E8%A1%8C%E5%88%86%E9%85%8D"><span class="nav-number">7.1.</span> <span class="nav-text">对象优先在 EDAN 区进行分配</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%A7%E5%AF%B9%E8%B1%A1%E7%9B%B4%E6%8E%A5%E8%BF%9B%E5%85%A5%E8%80%81%E5%B9%B4%E4%BB%A3"><span class="nav-number">7.2.</span> <span class="nav-text">大对象直接进入老年代</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%95%BF%E6%9C%9F%E5%AD%98%E6%B4%BB%E7%9A%84%E5%AF%B9%E8%B1%A1%E8%BF%9B%E5%85%A5%E8%80%81%E5%B9%B4%E4%BB%A3"><span class="nav-number">7.3.</span> <span class="nav-text">长期存活的对象进入老年代</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8A%A8%E6%80%81%E5%AF%B9%E8%B1%A1%E5%B9%B4%E9%BE%84%E5%88%A4%E5%AE%9A"><span class="nav-number">7.4.</span> <span class="nav-text">动态对象年龄判定</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A9%BA%E9%97%B4%E5%88%86%E9%85%8D%E6%8B%85%E4%BF%9D"><span class="nav-number">7.5.</span> <span class="nav-text">空间分配担保:</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%A4%E6%96%AD%E5%AF%B9%E8%B1%A1%E6%98%AF%E5%90%A6%E5%AD%98%E6%B4%BB"><span class="nav-number">2.</span> <span class="nav-text">判断对象是否存活</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#java1-2-%E4%B9%8B%E5%90%8E-%E5%B0%86%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B%E5%88%86%E4%B8%BA%E4%BB%A5%E4%B8%8B%E5%9B%9B%E7%A7%8D"><span class="nav-number">2.1.</span> <span class="nav-text">java1.2 之后,将引用类型分为以下四种</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E5%8C%BA%E7%9A%84%E5%9B%9E%E6%94%B6"><span class="nav-number">2.2.</span> <span class="nav-text">方法区的回收</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E7%AE%97%E6%B3%95"><span class="nav-number">3.</span> <span class="nav-text">垃圾收集算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HotSpot-%E7%9A%84%E7%AE%97%E6%B3%95%E7%BB%86%E8%8A%82%E5%AE%9E%E7%8E%B0"><span class="nav-number">4.</span> <span class="nav-text">HotSpot 的算法细节实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D%E5%92%8C%E5%9B%9E%E6%94%B6%E7%AD%96%E7%95%A5"><span class="nav-number">5.</span> <span class="nav-text">内存分配和回收策略</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E5%99%A8"><span class="nav-number">6.</span> <span class="nav-text">垃圾收集器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E7%BB%84%E5%90%88"><span class="nav-number">6.1.</span> <span class="nav-text">常用组合</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GC-%E5%8F%82%E6%95%B0%E7%9B%B8%E5%85%B3"><span class="nav-number">7.</span> <span class="nav-text">GC 参数相关</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%B8%B8%E7%94%A8%E7%BB%84%E5%90%88"><span class="nav-number">7.1.</span> <span class="nav-text">服务端常用组合</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 

@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://killy412.com/2021/01/19/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3JVM%E8%99%9A%E6%8B%9F%E6%9C%BA-GC/</loc>
+    <lastmod>2023-03-05</lastmod>
+  </url>
+  <url>
     <loc>https://killy412.com/2023/03/04/%E9%9A%8F%E7%AC%94(%E4%B8%80)/</loc>
     <lastmod>2023-03-04</lastmod>
   </url>
@@ -23,10 +27,6 @@
   <url>
     <loc>https://killy412.com/2021/07/02/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</loc>
     <lastmod>2021-09-27</lastmod>
-  </url>
-  <url>
-    <loc>https://killy412.com/2021/01/19/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3JVM%E8%99%9A%E6%8B%9F%E6%9C%BA-GC/</loc>
-    <lastmod>2021-08-24</lastmod>
   </url>
   <url>
     <loc>https://killy412.com/2021/01/30/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3JVM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E5%86%85%E5%AD%98/</loc>
