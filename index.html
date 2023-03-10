@@ -162,6 +162,136 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://killy412.com/2023/03/10/%E5%9F%BA%E4%BA%8ERedis%E5%8F%91%E5%B8%83%E8%AE%A2%E9%98%85%E5%92%8C%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F%E5%AE%9E%E7%8E%B0%E5%BB%B6%E8%BF%9F%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="船夫">
+      <meta itemprop="description" content="今天周二">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ik's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/03/10/%E5%9F%BA%E4%BA%8ERedis%E5%8F%91%E5%B8%83%E8%AE%A2%E9%98%85%E5%92%8C%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F%E5%AE%9E%E7%8E%B0%E5%BB%B6%E8%BF%9F%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86/" class="post-title-link" itemprop="url">基于Redis发布订阅和策略模式实现延迟事件处理</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-03-10 15:48:40" itemprop="dateCreated datePublished" datetime="2023-03-10T15:48:40+08:00">2023-03-10</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%E8%AE%BE%E8%AE%A1/" itemprop="url" rel="index"><span itemprop="name">解决方案设计</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%E8%AE%BE%E8%AE%A1/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" itemprop="url" rel="index"><span itemprop="name">设计模式</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h3><p>有这样的需求，用户发起一个活动(有人数限制和活动时间填写)，其他用户可以报名，报名人数满了之后就算成团，需要在活动开始之前提醒用户，活动开始时有对应业务处理，活动结束的时候有业务逻辑处理。这个功能如何设计？</p>
+<h3 id="设计"><a href="#设计" class="headerlink" title="设计"></a>设计</h3><p>主要是基于监听 Redis 的 Key 过期事件，加上策略模式实现的。</p>
+<p>首先活动开始时间是已知的，主要是求得活动开始之前的时间并触发事件，以及活动结束的时间并触发事件。</p>
+<ul>
+<li>活动开始之前的业务主要是给用户发提醒，所以在定在活动时间前两三个小时之前触发。如果用户提交活动的时间和活动开始的时间相差小于1H，拒绝用户提交；如果大于6H，则在活动开始之前3H提醒；如果时间差在1～6H，则 时间差/2;</li>
+<li>活动结束之后的时间程序无法把控，因为是用户的线下行为，所以直接定在了开始时间+3H。</li>
+</ul>
+<p>主要实现思路</p>
+<ol>
+<li>在活动提交的时候向 Redis 添加一个 Key (Key的组成是：固定前缀+活动ID+策略实现 Handler 类名)，过期时间依据当前时间和活动开始时间计算而出。</li>
+<li>监听到上一步的 Key 的过期事件，给用户提醒之后，再向 Redis 中添加活动开始对应的 Key ，过期时间根据当前时间和活动开始时间计算而得。</li>
+<li>监听到上一步的 Key 过期事件，做对应的业务处理，同时再向 Redis 添加对应的 Key ，过期时间根据当前时间+3H。</li>
+<li>监听到上一部的 Key 的过期事件，做对应的业务处理，此时一个活动的流程算是结束了。</li>
+</ol>
+<p>Key的组成包含三个部分</p>
+<ul>
+<li>固定前缀，使用 <code>Spring MessageListener</code> 组件可以监听到所有 Key 过期事件，只需要以活动前缀的 Key 做业务处理就可以。</li>
+<li>活动ID不用多说，每一步业务处理都需要。</li>
+<li>策略实现 Handler 类名，方便在234步骤中直接找到对应的处理类，不需要再写对应的类去找处理类了。</li>
+</ul>
+<p>有两个问题<br>Redis key 过期删除是定时+惰性，当 key 过多时，删除会有延迟，回调通知同样会有延迟。但此时有时间延迟是业务可允许的。<br>项目架构是集群，多个服务同时监听Redis，一个 Key 过期，所有的服务都会监听到，实际上一台服务处理就可以，所以这块使用了 Redis 分布式锁。</p>
+<h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3><ul>
+<li><p>SpringBoot 和 Redis相关的版本</p>
+<table>
+<thead>
+<tr>
+<th>SpringBoot</th>
+<th>Redisson</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>2.2.4.RELEASE</td>
+<td>3.12.0</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>定义事件处理的接口以及三个实现，实现中时间为了测试快速看到结果，直接设置为了10s</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">AbstractActivityEventHandle</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">handle</span><span class="params">(Long type)</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Component(&quot;activityRemindHandle&quot;)</span></span><br><span class="line"><span class="meta">@Slf4j</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ActivityRemindHandle</span> <span class="keyword">implements</span> <span class="title">AbstractActivityEventHandle</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> RedisTemplate&lt;String, Object&gt; redisTemplate</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">handle</span><span class="params">(Long type)</span> </span>&#123;</span><br><span class="line">        redisTemplate.opsForValue().set(<span class="string">&quot;activity_expire_event:123:activityStartHandle&quot;</span>, <span class="string">&quot;1&quot;</span>, <span class="number">10</span>, TimeUnit.SECONDS)</span><br><span class="line">        log.info(<span class="string">&quot;activity remind handle...&#123;&#125;&quot;</span>, type)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Slf4j</span></span><br><span class="line"><span class="meta">@Component(&quot;activityStartHandle&quot;)</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ActivityStartHandle</span> <span class="keyword">implements</span> <span class="title">AbstractActivityEventHandle</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> RedisTemplate&lt;String, Object&gt; redisTemplate</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">handle</span><span class="params">(Long type)</span> </span>&#123;</span><br><span class="line">        redisTemplate.opsForValue().set(<span class="string">&quot;activity_expire_event:123:activityEndHandle&quot;</span>, <span class="string">&quot;1&quot;</span>, <span class="number">10</span>, TimeUnit.SECONDS)</span><br><span class="line">        log.info(<span class="string">&quot;activity start handle...&#123;&#125;&quot;</span>, type)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@Slf4j</span></span><br><span class="line"><span class="meta">@Component(&quot;activityEndHandle&quot;)</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ActivityEndHandle</span> <span class="keyword">implements</span> <span class="title">AbstractActivityEventHandle</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">handle</span><span class="params">(Long type)</span> </span>&#123;</span><br><span class="line">        log.info(<span class="string">&quot;activity end handle...&#123;&#125;&quot;</span>, type)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<ul>
+<li>创建消息监听器</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ActivityKeyExpiredListener</span> <span class="keyword">extends</span> <span class="title">KeyExpirationEventMessageListener</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> RedissonClient redissonClient</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> Map&lt;String, AbstractActivityEventHandle&gt; activityHandlerMap;</span><br><span class="line"></span><br><span class="line">    ActivityKeyExpiredListener(RedisMessageListenerContainer listenerContainer) &#123;</span><br><span class="line">        <span class="keyword">super</span>(listenerContainer)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">onMessage</span><span class="params">(Message message, <span class="meta">@Nullable</span> <span class="keyword">byte</span>[] pattern)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onMessage(message, pattern)</span><br><span class="line">        <span class="comment">// 获取到失效的 key，进行取消订单业务处理</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">final</span> String key = message.toString()</span><br><span class="line">        <span class="keyword">if</span> (key.startsWith(<span class="string">&quot;activity_expire_event:&quot;</span>)) &#123;</span><br><span class="line">            <span class="keyword">final</span> String activityId = key.replace(<span class="string">&quot;activity_expire_event:&quot;</span>, <span class="string">&quot;&quot;</span>);</span><br><span class="line">            <span class="keyword">final</span> String[] strings = activityId.split(<span class="string">&quot;:&quot;</span>);</span><br><span class="line">            <span class="comment">//使用分布式锁，防止业务重复处理</span></span><br><span class="line">            <span class="keyword">final</span> RLock lock = <span class="keyword">this</span>.redissonClient.getLock(<span class="string">&quot;activity_handler_lock_&quot;</span> + activityId);</span><br><span class="line">            <span class="keyword">final</span> <span class="keyword">boolean</span> b = lock.tryLock();</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                <span class="keyword">if</span> (b) &#123;</span><br><span class="line">                    <span class="comment">//策略模式处理对应的事件</span></span><br><span class="line">                    <span class="keyword">this</span>.activityHandlerMap.get(strings[<span class="number">1</span>]).handle(Long.valueOf(strings[<span class="number">0</span>]));</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; <span class="keyword">catch</span> (<span class="keyword">final</span> Exception e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">                <span class="keyword">if</span> (b) &#123;</span><br><span class="line">                    lock.unlock();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>创建监听器容器以及 Redis 模板</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">RedisListenerConfig</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function">RedisMessageListenerContainer <span class="title">redisMessageListenerContainer</span><span class="params">(RedisConnectionFactory redisConnectionFactory)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">final</span> RedisMessageListenerContainer redisMessageListenerContainer = <span class="keyword">new</span> RedisMessageListenerContainer()</span><br><span class="line">        redisMessageListenerContainer.setConnectionFactory(redisConnectionFactory)</span><br><span class="line">        <span class="keyword">return</span> redisMessageListenerContainer</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@EnableCaching</span></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@AutoConfigureBefore(value = [RedisAutoConfiguration.class, RedissonAutoConfiguration.class])</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">RedisConfig</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> RedisTemplate&lt;String, Object&gt; <span class="title">redisTemplate</span><span class="params">(<span class="keyword">final</span> RedisConnectionFactory redisConnectionFactory)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">final</span> RedisTemplate&lt;String, Object&gt; redisTemplate = <span class="keyword">new</span> RedisTemplate&lt;&gt;();</span><br><span class="line">        redisTemplate.setKeySerializer(<span class="keyword">new</span> StringRedisSerializer());</span><br><span class="line">        redisTemplate.setHashKeySerializer(<span class="keyword">new</span> StringRedisSerializer());</span><br><span class="line">        redisTemplate.setValueSerializer(<span class="keyword">new</span> JdkSerializationRedisSerializer());</span><br><span class="line">        redisTemplate.setHashValueSerializer(<span class="keyword">new</span> JdkSerializationRedisSerializer());</span><br><span class="line">        redisTemplate.setEnableTransactionSupport(<span class="keyword">true</span>);</span><br><span class="line">        redisTemplate.setConnectionFactory(redisConnectionFactory);</span><br><span class="line">        redisTemplate.afterPropertiesSet();</span><br><span class="line">        <span class="keyword">return</span> redisTemplate;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>创建测试入口</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/groovy&quot;)</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestGroovyController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> RedisTemplate&lt;String, Object&gt; redisTemplate</span><br><span class="line"></span><br><span class="line">    <span class="meta">@GetMapping(&quot;/submit&quot;)</span></span><br><span class="line">    <span class="function">String <span class="title">submit</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// key的组成有三部分</span></span><br><span class="line">        redisTemplate.opsForValue().set(<span class="string">&quot;activity_expire_event:123:activityRemindHandle&quot;</span>, <span class="string">&quot;1&quot;</span>, <span class="number">10</span>, TimeUnit.SECONDS)</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;success&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>执行结果</p>
+<p> ![](<a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Killy412/killy412.github.io@hexo/source/images/2023-03-11">https://cdn.jsdelivr.net/gh/Killy412/killy412.github.io@hexo/source/images/2023-03-11</a> 01-14-05.png)</p>
+</li>
+</ul>
+<h3 id="实现参考"><a href="#实现参考" class="headerlink" title="实现参考"></a>实现参考</h3><ul>
+<li><img src="https://mp.weixin.qq.com/s/tMR0-Oxw99XtF1KBTGrnAg"></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://killy412.com/2023/03/09/%E9%9A%8F%E7%AC%94(%E4%BA%8C)/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2061,20 +2191,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">24</span>
+          <span class="site-state-item-count">25</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-count">19</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">32</span>
+        <span class="site-state-item-count">34</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
