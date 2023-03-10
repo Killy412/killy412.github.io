@@ -6,7 +6,7 @@
   <link href="https://killy412.com/atom.xml" rel="self"/>
   
   <link href="https://killy412.com/"/>
-  <updated>2023-03-10T17:29:49.581Z</updated>
+  <updated>2023-03-10T17:35:42.927Z</updated>
   <id>https://killy412.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://killy412.com/2023/03/10/%E5%9F%BA%E4%BA%8ERedis%E5%8F%91%E5%B8%83%E8%AE%A2%E9%98%85%E5%92%8C%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F%E5%AE%9E%E7%8E%B0%E5%BB%B6%E8%BF%9F%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86/"/>
     <id>https://killy412.com/2023/03/10/%E5%9F%BA%E4%BA%8ERedis%E5%8F%91%E5%B8%83%E8%AE%A2%E9%98%85%E5%92%8C%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F%E5%AE%9E%E7%8E%B0%E5%BB%B6%E8%BF%9F%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86/</id>
     <published>2023-03-10T07:48:40.000Z</published>
-    <updated>2023-03-10T17:29:49.581Z</updated>
+    <updated>2023-03-10T17:35:42.927Z</updated>
     
     
     <summary type="html">&lt;h3 id=&quot;需求&quot;&gt;&lt;a href=&quot;#需求&quot; class=&quot;headerlink&quot; title=&quot;需求&quot;&gt;&lt;/a&gt;需求&lt;/h3&gt;&lt;p&gt;有这样的需求，用户发起一个活动(有人数限制和活动时间填写)，其他用户可以报名，报名人数满了之后就算成团，需要在活动开始之前提醒用户，活动开始时有对应业务处理，活动结束的时候有业务逻辑处理。这个功能如何设计？&lt;/p&gt;</summary>
