@@ -28,7 +28,7 @@ tags:
 1. 在活动提交的时候向 Redis 添加一个 Key (Key的组成是：固定前缀+活动ID+策略实现 Handler 类名)，过期时间依据当前时间和活动开始时间计算而出。
 2. 监听到上一步的 Key 的过期事件，给用户提醒之后，再向 Redis 中添加活动开始对应的 Key ，过期时间根据当前时间和活动开始时间计算而得。
 3. 监听到上一步的 Key 过期事件，做对应的业务处理，同时再向 Redis 添加对应的 Key ，过期时间根据当前时间+3H。
-4. 监听到上一部的 Key 的过期事件，做对应的业务处理，此时一个活动的流程算是结束了。
+4. 监听到上一步的 Key 的过期事件，做对应的业务处理，此时一个活动的流程算是结束了。
 
 Key的组成包含三个部分
 - 固定前缀，使用 `Spring MessageListener` 组件可以监听到所有 Key 过期事件，只需要以活动前缀的 Key 做业务处理就可以。
@@ -112,9 +112,6 @@ class ActivityKeyExpiredListener extends KeyExpirationEventMessageListener {
 
     @Override
     void onMessage(Message message, @Nullable byte[] pattern) {
-        super.onMessage(message, pattern)
-        // 获取到失效的 key，进行取消订单业务处理
-
         final String key = message.toString()
         if (key.startsWith("activity_expire_event:")) {
             final String activityId = key.replace("activity_expire_event:", "");
