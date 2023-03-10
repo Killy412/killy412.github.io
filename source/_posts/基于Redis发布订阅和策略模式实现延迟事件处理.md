@@ -190,11 +190,11 @@ class TestGroovyController {
 
 - 执行结果
 
-   ![](https://cdn.jsdelivr.net/gh/Killy412/killy412.github.io@hexo/source/images/2023-03-11 01-14-05.png)
+![](https://cdn.jsdelivr.net/gh/Killy412/killy412.github.io@hexo/source/images/2023-03-11_01-14-05.png)
 
 
 ### 实现参考
 
-- ![](https://mp.weixin.qq.com/s/tMR0-Oxw99XtF1KBTGrnAg)
+- [Spring Boot 监听 Redis Key 失效事件实现定时任务](https://mp.weixin.qq.com/s/tMR0-Oxw99XtF1KBTGrnAg)
 
 
