@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.3.0">
+<meta name="generator" content="Hexo 5.4.2">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -213,32 +213,39 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="安装-Docker-虚拟机"><a href="#安装-Docker-虚拟机" class="headerlink" title="安装 Docker 虚拟机"></a>安装 Docker 虚拟机</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">yum install -y yum-utils <span class="comment"># 安装依赖软件包</span></span><br><span class="line">yum-config-manager --add-repo https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo <span class="comment">#添加软件仓库 阿里云docker安装包</span></span><br><span class="line">yum makecache fast  <span class="comment"># 启用缓存</span></span><br><span class="line">yum list docker-ce --showduplicates | sort -r  <span class="comment"># 查看版本 选择一个</span></span><br><span class="line">yum install docker-ce-&lt;version&gt; -y        <span class="comment"># 安装</span></span><br><span class="line">systemctl <span class="built_in">enable</span> docker <span class="comment"># 开机自启</span></span><br><span class="line">systemctl start docker  <span class="comment"># 启动</span></span><br><span class="line">systemctl stop docker  <span class="comment"># 停止</span></span><br></pre></td></tr></table></figure>
-<a id="more"></a>
+        <h2 id="安装-Docker-虚拟机"><a href="#安装-Docker-虚拟机" class="headerlink" title="安装 Docker 虚拟机"></a>安装 Docker 虚拟机</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">yum install -y yum-utils <span class="comment"># 安装依赖软件包</span></span><br><span class="line">yum-config-manager --add-repo https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo <span class="comment">#添加软件仓库 阿里云docker安装包</span></span><br><span class="line">yum makecache fast  <span class="comment"># 启用缓存</span></span><br><span class="line">yum list docker-ce --showduplicates | <span class="built_in">sort</span> -r  <span class="comment"># 查看版本 选择一个</span></span><br><span class="line">yum install docker-ce-&lt;version&gt; -y        <span class="comment"># 安装</span></span><br><span class="line">systemctl <span class="built_in">enable</span> docker <span class="comment"># 开机自启</span></span><br><span class="line">systemctl start docker  <span class="comment"># 启动</span></span><br><span class="line">systemctl stop docker  <span class="comment"># 停止</span></span><br></pre></td></tr></table></figure>
+<span id="more"></span>
 
 <h3 id="设置镜像加速器"><a href="#设置镜像加速器" class="headerlink" title="设置镜像加速器"></a>设置镜像加速器</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -sSL https://get.daocloud.io/daotools/set_mirror.sh | sh -s http://f1361db2.m.daocloud.io</span><br></pre></td></tr></table></figure>
+
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="string">&quot;registry-mirrors&quot;</span>:[<span class="string">&quot;https://docker.mirrors.ustc.edu.cn&quot;</span>]&#125;</span><br><span class="line">BashCC++C<span class="comment">#CSSGoHaskellHTMLJavaJavaScriptJSONJSXkotlinPHPPowerShellPythonRubyRustSQLSwiftTypeScriptXML</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## 新方法 编辑 /etc/docker/daemon.json</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;registry-mirrors&quot;</span>: [</span><br><span class="line">    <span class="string">&quot;https://dockerhub.azk8s.cn&quot;</span>,</span><br><span class="line">    <span class="string">&quot;https://reg-mirror.qiniu.com&quot;</span>,</span><br><span class="line">    <span class="string">&quot;https://registry.docker-cn.com&quot;</span></span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br><span class="line">sudo systemctl daemon-reload  <span class="comment"># 更新修改的配置文件</span></span><br></pre></td></tr></table></figure>
-<p>编辑/etc/docker/daemon.json 文件，把结尾的逗号去掉</p>
+
+<p>编辑&#x2F;etc&#x2F;docker&#x2F;daemon.json 文件，把结尾的逗号去掉</p>
 <ul>
 <li>管理镜像</li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#搜索镜像</span></span><br><span class="line">docker search 关键字</span><br><span class="line"><span class="comment">#下载镜像</span></span><br><span class="line">docker pull [选项] [Docker Registry 地址[:端口]/]仓库名[:标签]</span><br><span class="line">docker pull 镜像名字</span><br><span class="line"><span class="comment">#查看镜像</span></span><br><span class="line">docker images -a</span><br><span class="line"><span class="comment">#重命名镜像</span></span><br><span class="line">docker tag 旧镜像 新镜像</span><br><span class="line"><span class="comment">#删除镜像</span></span><br><span class="line">docker rmi 镜像ID</span><br><span class="line"><span class="comment">#导出镜像</span></span><br><span class="line">docker save -o 压缩文件路径 镜像名字</span><br><span class="line"><span class="comment">#导入镜像</span></span><br><span class="line">docker load &lt; 压缩文件路径</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li>构建镜像</li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker build [选项] &lt;上下文路径&gt;  <span class="comment"># 构建镜像</span></span><br><span class="line"><span class="comment"># 示例  -t 容器名称  3是版本号   .构建上下文</span></span><br><span class="line">docker build -t nginx:3 .</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li>创建容器</li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#查看运行的容器</span></span><br><span class="line">docker ps 查看运行的容器</span><br><span class="line"><span class="comment">#创建普通容器</span></span><br><span class="line">docker run -it --name 别名 镜像名字 程序名字</span><br><span class="line"><span class="comment">#创建含有端口映射的容器   -d&#123;后台运行容器&#125;</span></span><br><span class="line">docker run -d --name 别名 -p 宿主机端口:容器端口 镜像名字 程序名字</span><br><span class="line"><span class="comment">#创建含有挂载目录的容器</span></span><br><span class="line">docker run -d --name 别名 -v 宿主机目录:容器目录 --privileged 镜像名字 程序名字</span><br><span class="line"><span class="comment">#######################操作容器</span></span><br><span class="line"><span class="comment">#暂停容器</span></span><br><span class="line">docker pasue 容器</span><br><span class="line"><span class="comment">#恢复容器</span></span><br><span class="line">docker unpause 容器</span><br><span class="line"><span class="comment">#停止容器</span></span><br><span class="line">docker stop 容器</span><br><span class="line"><span class="comment">#启动容器</span></span><br><span class="line">docker start -i <span class="comment"># 容器</span></span><br><span class="line">docker rm -f xxx <span class="comment"># 删除容器</span></span><br><span class="line">docker restart 容器id <span class="comment">#</span></span><br><span class="line">docker update --restart=always &lt;容器id&gt;  <span class="comment"># 更新启动方式  docker启动容器就启动</span></span><br><span class="line">                       =no  <span class="comment"># 默认选项,不自动启动</span></span><br><span class="line">                       =unless-stopped  <span class="comment"># 无论容器退出时状态如何始终重启容器</span></span><br><span class="line">                       =on-failure[max-retries]  <span class="comment"># 容器处于非零状态时重启容器</span></span><br><span class="line">docker logs -f -t  &lt;容器ID&gt;  <span class="comment"># 实时查看docker日志 -t 显示时间戳</span></span><br><span class="line">docker logs --tail=20 &lt;容器id&gt;  <span class="comment"># 查看20行日志</span></span><br><span class="line">docker inspect [容器id]  <span class="comment"># 查看容器信息</span></span><br><span class="line">docker volume prune  <span class="comment"># 清理多余的数据卷</span></span><br><span class="line"><span class="comment"># 拷贝docker日志</span></span><br><span class="line">docker container cp [容器id]:[日志路径] [拷贝的目标路径]</span><br><span class="line"><span class="comment"># docker运行日志路径</span></span><br><span class="line">docker inspect --format=<span class="string">&#x27;&#123;&#123;.LogPath&#125;&#125;&#x27;</span> [容器id]</span><br><span class="line"><span class="comment"># 日志copy</span></span><br><span class="line">docker logs &lt;options&gt; [容器id] &gt;&amp; logs/myFile.log</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#查看运行的容器</span></span><br><span class="line">docker ps 查看运行的容器</span><br><span class="line"><span class="comment">#创建普通容器</span></span><br><span class="line">docker run -it --name 别名 镜像名字 程序名字</span><br><span class="line"><span class="comment">#创建含有端口映射的容器   -d&#123;后台运行容器&#125;</span></span><br><span class="line">docker run -d --name 别名 -p 宿主机端口:容器端口 镜像名字 程序名字</span><br><span class="line"><span class="comment">#创建含有挂载目录的容器</span></span><br><span class="line">docker run -d --name 别名 -v 宿主机目录:容器目录 --privileged 镜像名字 程序名字</span><br><span class="line"><span class="comment">#######################操作容器</span></span><br><span class="line"><span class="comment">#暂停容器</span></span><br><span class="line">docker pasue 容器</span><br><span class="line"><span class="comment">#恢复容器</span></span><br><span class="line">docker unpause 容器</span><br><span class="line"><span class="comment">#停止容器</span></span><br><span class="line">docker stop 容器</span><br><span class="line"><span class="comment">#启动容器</span></span><br><span class="line">docker start -i <span class="comment"># 容器</span></span><br><span class="line">docker <span class="built_in">rm</span> -f xxx <span class="comment"># 删除容器</span></span><br><span class="line">docker restart 容器<span class="built_in">id</span> <span class="comment">#</span></span><br><span class="line">docker update --restart=always &lt;容器<span class="built_in">id</span>&gt;  <span class="comment"># 更新启动方式  docker启动容器就启动</span></span><br><span class="line">                       =no  <span class="comment"># 默认选项,不自动启动</span></span><br><span class="line">                       =unless-stopped  <span class="comment"># 无论容器退出时状态如何始终重启容器</span></span><br><span class="line">                       =on-failure[max-retries]  <span class="comment"># 容器处于非零状态时重启容器</span></span><br><span class="line">docker logs -f -t  &lt;容器ID&gt;  <span class="comment"># 实时查看docker日志 -t 显示时间戳</span></span><br><span class="line">docker logs --<span class="built_in">tail</span>=20 &lt;容器<span class="built_in">id</span>&gt;  <span class="comment"># 查看20行日志</span></span><br><span class="line">docker inspect [容器<span class="built_in">id</span>]  <span class="comment"># 查看容器信息</span></span><br><span class="line">docker volume prune  <span class="comment"># 清理多余的数据卷</span></span><br><span class="line"><span class="comment"># 拷贝docker日志</span></span><br><span class="line">docker container <span class="built_in">cp</span> [容器<span class="built_in">id</span>]:[日志路径] [拷贝的目标路径]</span><br><span class="line"><span class="comment"># docker运行日志路径</span></span><br><span class="line">docker inspect --format=<span class="string">&#x27;&#123;&#123;.LogPath&#125;&#125;&#x27;</span> [容器<span class="built_in">id</span>]</span><br><span class="line"><span class="comment"># 日志copy</span></span><br><span class="line">docker logs &lt;options&gt; [容器<span class="built_in">id</span>] &gt;&amp; logs/myFile.<span class="built_in">log</span></span><br></pre></td></tr></table></figure>
+
 <ul>
 <li>进入容器</li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it [容器id] bash</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it [容器<span class="built_in">id</span>] bash</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li>导出容器</li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">export</span> [容器ID] &gt; [本地文件.tar]</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li>登录账号</li>
 </ul>
@@ -246,23 +253,28 @@
 <h2 id="docker自定义hosts"><a href="#docker自定义hosts" class="headerlink" title="docker自定义hosts"></a>docker自定义hosts</h2><h3 id="启动时添加"><a href="#启动时添加" class="headerlink" title="启动时添加"></a>启动时添加</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker run -it -d --name test --add-host=hostname:127.0.0.1 test:latest</span><br><span class="line">                              --add-host=&lt;yuming&gt;:&lt;ip&gt; --add-host=&lt;yuming&gt;:&lt;ip&gt;</span><br><span class="line">                              --add-host=&quot;yuming yuming2&quot;:&lt;ip&gt;</span><br></pre></td></tr></table></figure>
 <p>–add-host 最好在–name参数后面</p>
 <h3 id="在docker-compose-yml文件中添加"><a href="#在docker-compose-yml文件中添加" class="headerlink" title="在docker-compose.yml文件中添加"></a>在<code>docker-compose.yml</code>文件中添加</h3><p>通过配置参数extra_hosts来实现</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">extra_hosts:</span><br><span class="line"> - &quot;somehost:162.242.195.82&quot;</span><br><span class="line"> - &quot;otherhost:50.31.209.229&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">extra_hosts:</span><br><span class="line"> - &quot;somehost:162.242.195.82&quot;</span><br><span class="line"> - &quot;otherhost:50.31.209.229&quot;</span><br></pre></td></tr></table></figure>
+
 <h2 id="docker-安装-redis"><a href="#docker-安装-redis" class="headerlink" title="docker 安装 redis"></a>docker 安装 redis</h2><ul>
 <li>拉取镜像</li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull daocloud.io/library/redis:5.0.5</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li>运行容器</li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -p 6379:6379 --name redis -v /redis/redis.conf:/etc/redis/redis.config -v /redis/data:/data -d redis:5.0.5 redis-server --appendonly yes  --requirepass <span class="string">&quot;1qaz@WSX&quot;</span> <span class="comment"># 设定密码</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -p 6379:6379 --name redis -v /redis/redis.conf:/etc/redis/redis.config -v /redis/data:/data -d redis:5.0.5 redis-server --appendonly <span class="built_in">yes</span>  --requirepass <span class="string">&quot;1qaz@WSX&quot;</span> <span class="comment"># 设定密码</span></span><br></pre></td></tr></table></figure>
+
 <h2 id="docker-安装-mysql"><a href="#docker-安装-mysql" class="headerlink" title="docker 安装 mysql"></a>docker 安装 mysql</h2><ul>
 <li>拉取镜像</li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull mysql:8.0.15</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li>运行容器</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -p 3306:3306 --restart&#x3D;always --name mysql -e MYSQL_ROOT_PASSWORD&#x3D;1qaz@WSX -v &#x2F;mysql&#x2F;conf&#x2F;my.cnf:&#x2F;etc&#x2F;my.cnf -d mysql:8.0.15 --default-authentication-plugin&#x3D;mysql_native_password</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -p 3306:3306 --restart=always --name mysql -e MYSQL_ROOT_PASSWORD=1qaz@WSX -v /mysql/conf/my.cnf:/etc/my.cnf -d mysql:8.0.15 --default-authentication-plugin=mysql_native_password</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li>客户端连不上</li>
 </ul>
@@ -274,6 +286,7 @@
 <li>运行容器</li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d --hostname rabbit-host --name rabbitmq --restart=always -e RABBITMQ_DEFAULT_USER=user -e RABBITMQ_DEFAULT_PASS=1qaz@WSX -p 15672:15672 -p 5672:5672 rabbitmq:3.7.15-management</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li>–hostname：指定容器主机名称</li>
 <li>–name:指定容器名称</li>
@@ -284,28 +297,36 @@
 <li>添加用户</li>
 </ol>
 <figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rabbitmqctl add_user root <span class="number">123456</span></span><br></pre></td></tr></table></figure>
+
 <ol start="3">
 <li>赋予权限</li>
 </ol>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rabbitmqctl set_permissions -p / root <span class="string">&quot;.*&quot;</span> <span class="string">&quot;.*&quot;</span> <span class="string">&quot;.*&quot;</span></span><br></pre></td></tr></table></figure>
+
 <ol start="4">
 <li>赋予角色</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rabbitmqctl set_user_tags root adminstrator</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rabbitmqctl set_user_tags root adminstrator</span><br></pre></td></tr></table></figure>
+
 <ol start="5">
 <li>查看用户列表以及角色</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rabbitmqctl list_users</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rabbitmqctl list_users</span><br></pre></td></tr></table></figure>
+
 <h2 id="docker-安装-es"><a href="#docker-安装-es" class="headerlink" title="docker 安装 es"></a>docker 安装 es</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker run -e ES_JAVA_OPTS=<span class="string">&quot;-Xms512m -Xmx512m&quot;</span> -d -p 9200:9200 -p 9300:9300 -v /etc/elsearch/elsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml --name es-master</span><br><span class="line">elasticsearch:6.7.0</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li>设置 jvm 线程数</li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/sysctl.conf</span><br><span class="line"><span class="comment"># 添加这个</span></span><br><span class="line">vm.max_map_count=262144</span><br><span class="line"><span class="comment"># 保存后执行这个命令</span></span><br><span class="line">sysctl -p</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li>安装插件-</li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./bin/elasticsearch-plugin install https://github.com/medcl/elasticsearch-analysis-ik/releases/download/v6.7.0/elasticsearch-analysis-ik-6.7.0.zip</span><br></pre></td></tr></table></figure>
+
 <h2 id="删除-none-镜像"><a href="#删除-none-镜像" class="headerlink" title="删除 none 镜像"></a><font color="red">删除 none 镜像</font></h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker images|grep none|awk <span class="string">&#x27;&#123;print $3&#125;&#x27;</span>|xargs docker rmi</span><br><span class="line">docker rmi $(docker images | grep <span class="string">&quot;^&lt;none&gt;&quot;</span> | awk <span class="string">&quot;&#123;print <span class="variable">$3</span>&#125;&quot;</span>)</span><br></pre></td></tr></table></figure>
+
 <h2 id="服务器重启-使用容器重启命令"><a href="#服务器重启-使用容器重启命令" class="headerlink" title="服务器重启,使用容器重启命令"></a><strong>服务器重启,使用容器重启命令</strong></h2>
     </div>
 
@@ -416,7 +437,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">25</span>
+          <span class="site-state-item-count">27</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.3.0">
+<meta name="generator" content="Hexo 5.4.2">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -216,7 +216,8 @@
       
         <h2 id="IDEA-显示-Run-Dashboard-的方式"><a href="#IDEA-显示-Run-Dashboard-的方式" class="headerlink" title="IDEA 显示 Run Dashboard 的方式"></a>IDEA 显示 Run Dashboard 的方式</h2><p>在.idea 文件夹下面找到 workspace.xml 文件, 添加以下标签</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">component</span> <span class="attr">name</span>=<span class="string">&quot;RunDashboard&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">option</span> <span class="attr">name</span>=<span class="string">&quot;configurationTypes&quot;</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">set</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;SpringBootApplicationConfigurationType&quot;</span> /&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">set</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">component</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<a id="more"></a>
+
+<span id="more"></span>
 
 <h2 id="常用插件"><a href="#常用插件" class="headerlink" title="常用插件"></a>常用插件</h2><ul>
 <li><p>Translation 翻译</p>
@@ -257,10 +258,12 @@
 <li>linux</li>
 </ul>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">rm -rf ~/.java/.userPrefs/jetbrains/pycharm</span><br><span class="line">cd ~/.config/JetBrains/PyCharm2020.2</span><br><span class="line">rm -rf eval</span><br><span class="line">rm -rf options/other.xml</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li>windows</li>
 </ul>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd &quot;C:%HOMEPATH%\.IntelliJIdea*\config&quot;</span><br><span class="line">rmdir &quot;eval&quot; /s /q</span><br><span class="line">del &quot;options\other.xml&quot;</span><br><span class="line">reg delete &quot;HKEY_CURRENT_USER\Software\JavaSoft\Prefs\jetbrains\idea&quot; /f</span><br></pre></td></tr></table></figure>
+
     </div>
 
     
@@ -371,7 +374,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">25</span>
+          <span class="site-state-item-count">27</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

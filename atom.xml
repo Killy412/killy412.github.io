@@ -6,7 +6,7 @@
   <link href="https://killy412.com/atom.xml" rel="self"/>
   
   <link href="https://killy412.com/"/>
-  <updated>2023-03-10T17:35:42.927Z</updated>
+  <updated>2023-03-11T10:59:07.091Z</updated>
   <id>https://killy412.com/</id>
   
   <author>
@@ -15,6 +15,44 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>随笔(四)</title>
+    <link href="https://killy412.com/2023/03/11/%E9%9A%8F%E7%AC%94(%E5%9B%9B)/"/>
+    <id>https://killy412.com/2023/03/11/%E9%9A%8F%E7%AC%94(%E5%9B%9B)/</id>
+    <published>2023-03-11T08:12:30.000Z</published>
+    <updated>2023-03-11T10:59:07.091Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;去年G生病是一个契机，让我和C重新联系上了。今年春节联系的稍微多了一些，然后就开始对我问东问西，想对我予以教育。同时昨天很多年没见面的老友(C的朋友)M相聚，因为C而认识，十多年未见面。相聚中M给C打了一个视频，秒接，热情的招呼M‘弟弟’，同时直接把摄像头转向桌子上，桌子上是正在打牌，然后M把摄像头对向了我，C直接把视频挂了。。。再打回来的时候说，刚才在看人打牌呢。。。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="随笔" scheme="https://killy412.com/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+    <category term="随笔" scheme="https://killy412.com/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>随笔(三)</title>
+    <link href="https://killy412.com/2023/03/11/%E9%9A%8F%E7%AC%94(%E4%B8%89)/"/>
+    <id>https://killy412.com/2023/03/11/%E9%9A%8F%E7%AC%94(%E4%B8%89)/</id>
+    <published>2023-03-11T07:45:05.000Z</published>
+    <updated>2023-03-11T07:48:45.648Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;前几天会见了一个十多年未见的老友M，我们初中开始认识，在十六七的年纪一块玩过几年，每天就是抽烟打牌看黄片，我不打牌，因为那时候我只有生活费，没有多余的钱去赌博。M离开那家煤矿后就再也没有见过也没有联系了，他去闯荡世界了。这几年我在HC工作，他最近碰巧也在HC，所以又聚一块喝了顿酒。聊了很多他的经历，关于所遇到的女人，关于事业上的闯荡，让我了解到’底层人民’的生活。同时也发现自己身上的很多东西都是那时留下的，他们对我有一定的影响。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="随笔" scheme="https://killy412.com/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+    <category term="随笔" scheme="https://killy412.com/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+  </entry>
   
   <entry>
     <title>基于Redis发布订阅和策略模式实现延迟事件处理</title>
@@ -49,7 +87,7 @@
     <updated>2023-03-09T05:42:25.215Z</updated>
     
     
-    <summary type="html">&lt;p&gt;今天面试把自己身上的缺点暴露无遗。比如不擅沟通/记忆力不好/不擅人情事故。 &lt;/p&gt;
+    <summary type="html">&lt;p&gt;今天面试把自己身上的缺点暴露无遗。比如不擅沟通&amp;#x2F;记忆力不好&amp;#x2F;不擅人情事故。 &lt;/p&gt;
 &lt;p&gt;不善沟通从小遗留的问题，成长环境造成的怕生，面对一切都是畏畏缩缩，想在成人之后改掉很难，需要克服成长期形成的习惯。&lt;/p&gt;</summary>
     
     
@@ -96,7 +134,8 @@
 &lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/Dreamacro/clash/releases&quot;&gt;官方下载&lt;/a&gt;,选择一个合适电脑架构的.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;p&gt;解压缩,并且赋予执行权限&lt;/p&gt;
-&lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;cd&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;mkdir clash &amp;amp;&amp;amp; cd clash&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;gzip clash.gz&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;sudo chmod +x clash&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
+&lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;cd&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;mkdir clash &amp;amp;&amp;amp; cd clash&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;gzip clash.gz&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;sudo chmod +x clash&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/li&gt;
+&lt;/ol&gt;</summary>
     
     
     
@@ -165,7 +204,7 @@
       
         
         
-    <summary type="html">&lt;h3 id=&quot;半年总结&quot;&gt;&lt;a href=&quot;#半年总结&quot; class=&quot;headerlink&quot;</summary>
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;/assets/css/APlayer.min.css&quot;&gt;&lt;script src=&quot;/assets/js/APlayer.min.js&quot;</summary>
         
       
     
@@ -221,7 +260,7 @@
 &lt;/li&gt;
 &lt;li&gt;&lt;p&gt;初始化.&lt;/p&gt;
 &lt;p&gt;执行类构造器&lt;code&gt;clinit()&lt;/code&gt;函数,是由static变量赋值和static代码块组合而成.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;遇到new/getstatic/putstatic/invokestatic才会执行类的初始化过程.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;遇到new&amp;#x2F;getstatic&amp;#x2F;putstatic&amp;#x2F;invokestatic才会执行类的初始化过程.&lt;/strong&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;</summary>
     
@@ -290,7 +329,7 @@
     <updated>2021-08-24T14:58:29.886Z</updated>
     
     
-    <summary type="html">&lt;h2 id=&quot;Git-常用命令&quot;&gt;&lt;a href=&quot;#Git-常用命令&quot; class=&quot;headerlink&quot; title=&quot;Git 常用命令&quot;&gt;&lt;/a&gt;Git 常用命令&lt;/h2&gt;&lt;h3 id=&quot;创建版本库&quot;&gt;&lt;a href=&quot;#创建版本库&quot; class=&quot;headerlink&quot; title=&quot;创建版本库&quot;&gt;&lt;/a&gt;创建版本库&lt;/h3&gt;&lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;git init  #初始化 git 本地仓库&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;git add xxx #添加文件到本地库&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;git commit -m &amp;quot;&amp;quot; #提交文件&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;bash&quot;&gt;本地库和远程库关联&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;git remote add name(本地库名字) git@github.com:path(用户名)/xxx.git(仓库名)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;git remote add 本地库名字 远程仓库路径&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
+    <summary type="html">&lt;h2 id=&quot;Git-常用命令&quot;&gt;&lt;a href=&quot;#Git-常用命令&quot; class=&quot;headerlink&quot; title=&quot;Git 常用命令&quot;&gt;&lt;/a&gt;Git 常用命令&lt;/h2&gt;&lt;h3 id=&quot;创建版本库&quot;&gt;&lt;a href=&quot;#创建版本库&quot; class=&quot;headerlink&quot; title=&quot;创建版本库&quot;&gt;&lt;/a&gt;创建版本库&lt;/h3&gt;&lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;git init  #初始化 git 本地仓库&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;git add xxx #添加文件到本地库&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;git commit -m &amp;quot;&amp;quot; #提交文件&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta prompt_&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;language-bash&quot;&gt;本地库和远程库关联&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;git remote add name(本地库名字) git@github.com:path(用户名)/xxx.git(仓库名)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;git remote add 本地库名字 远程仓库路径&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
     
     
     
@@ -330,7 +369,7 @@
     <updated>2022-10-08T12:58:30.770Z</updated>
     
     
-    <summary type="html">&lt;h2 id=&quot;常用命令&quot;&gt;&lt;a href=&quot;#常用命令&quot; class=&quot;headerlink&quot; title=&quot;常用命令&quot;&gt;&lt;/a&gt;常用命令&lt;/h2&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 查看某个进程的子进程&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;pstree -p [pid]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 查看进程中子线程的资源占用情况&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;top -Hp [pid]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;top -n 1 -H -p [pid]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 查看磁盘情况&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;df -hl&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 查找程序&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;ps -ef | grep -v grep | grep fisco-bcos&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 查看端口占用情况&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;netstat -ano | grep tcp |grep 8545&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;netstat -tnlp | grep ssh&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;netstat -anpt| grep ssh&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 查看端口占用进程&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;lsof -i:&amp;lt;端口&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 添加执行权限&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;chmod a+x &amp;lt;文件名&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
+    <summary type="html">&lt;h2 id=&quot;常用命令&quot;&gt;&lt;a href=&quot;#常用命令&quot; class=&quot;headerlink&quot; title=&quot;常用命令&quot;&gt;&lt;/a&gt;常用命令&lt;/h2&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 查看某个进程的子进程&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;pstree -p [pid]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 查看进程中子线程的资源占用情况&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;top -Hp [pid]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;top -n 1 -H -p [pid]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 查看磁盘情况&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;df&lt;/span&gt; -hl&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 查找程序&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;ps -ef | grep -v grep | grep fisco-bcos&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 查看端口占用情况&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;netstat -ano | grep tcp |grep 8545&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;netstat -tnlp | grep ssh&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;netstat -anpt| grep ssh&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 查看端口占用进程&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;lsof -i:&amp;lt;端口&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 添加执行权限&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;chmod&lt;/span&gt; a+x &amp;lt;文件名&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
     
     
     
@@ -434,50 +473,6 @@
     
     
     <category term="总结" scheme="https://killy412.com/tags/%E6%80%BB%E7%BB%93/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Mybatis使用MySql JSON类型映射</title>
-    <link href="https://killy412.com/2020/11/23/Mybatis%E4%BD%BF%E7%94%A8MySql-JSON%E7%B1%BB%E5%9E%8B%E6%98%A0%E5%B0%84/"/>
-    <id>https://killy412.com/2020/11/23/Mybatis%E4%BD%BF%E7%94%A8MySql-JSON%E7%B1%BB%E5%9E%8B%E6%98%A0%E5%B0%84/</id>
-    <published>2020-11-23T11:33:44.000Z</published>
-    <updated>2021-08-24T14:58:29.886Z</updated>
-    
-    
-    <summary type="html">&lt;h3 id=&quot;MyBatis-中使用自定义转换器处理-json-类型&quot;&gt;&lt;a href=&quot;#MyBatis-中使用自定义转换器处理-json-类型&quot; class=&quot;headerlink&quot; title=&quot;MyBatis 中使用自定义转换器处理 json 类型&quot;&gt;&lt;/a&gt;MyBatis 中使用自定义转换器处理 json 类型&lt;/h3&gt;&lt;p&gt;mysql 在 5.7.8 版本以后就支持了 json 这种数据类型,在程序中处理的方法有很多,可以直接用 string 去接收 json 类型,然后再转. 也可以使用自定义转换器,需要继承&lt;code&gt;BaseTypeHandler&amp;lt;&amp;gt;&lt;/code&gt;类,然后在配置文件中加个扫描路径,在使用的地方指定转换器.&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;自定义转换器</summary>
-    
-    
-    
-    <category term="Mybatis" scheme="https://killy412.com/categories/Mybatis/"/>
-    
-    
-    <category term="Mybatis" scheme="https://killy412.com/tags/Mybatis/"/>
-    
-    <category term="MySql" scheme="https://killy412.com/tags/MySql/"/>
-    
-    <category term="JSON" scheme="https://killy412.com/tags/JSON/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>SpringBoot项目打包依赖本地jar包问题</title>
-    <link href="https://killy412.com/2020/11/16/SpringBoot%E9%A1%B9%E7%9B%AE%E6%89%93%E5%8C%85%E4%BE%9D%E8%B5%96%E6%9C%AC%E5%9C%B0jar%E5%8C%85%E9%97%AE%E9%A2%98/"/>
-    <id>https://killy412.com/2020/11/16/SpringBoot%E9%A1%B9%E7%9B%AE%E6%89%93%E5%8C%85%E4%BE%9D%E8%B5%96%E6%9C%AC%E5%9C%B0jar%E5%8C%85%E9%97%AE%E9%A2%98/</id>
-    <published>2020-11-16T07:16:44.000Z</published>
-    <updated>2021-08-24T14:58:29.886Z</updated>
-    
-    
-    <summary type="html">&lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;最近公司项目业务中遇到一些关于 Word 转换 pdf 相关的功能.功能的实现用到了网上的第三方 jar 包,没有中央仓库地址,只能下载下来本地引用依赖. 因此遇到了一些引用本地 jar 包和打包的问题.&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="开发日志" scheme="https://killy412.com/categories/%E5%BC%80%E5%8F%91%E6%97%A5%E5%BF%97/"/>
-    
-    
-    <category term="SpringBoot" scheme="https://killy412.com/tags/SpringBoot/"/>
     
   </entry>
   

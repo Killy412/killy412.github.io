@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.3.0">
+<meta name="generator" content="Hexo 5.4.2">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -214,11 +214,13 @@
       
         <h3 id="准备环境"><a href="#准备环境" class="headerlink" title="准备环境"></a>准备环境</h3><h4 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h4><p>开发部署工具 build_chain.sh脚本依赖于openssl, curl，使用下面的指令安装。 若为CentOS，将下面命令中的apt替换为yum执行即可。macOS执行brew install openssl curl即可（macOS自带的openssl指令选项不同，请执行安装标准openssl）。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ubuntu环境安装依赖</span></span><br><span class="line">sudo apt install -y openssl curl  </span><br><span class="line"><span class="comment"># centos环境安装依赖</span></span><br><span class="line">sudo yum install -y openssl openssl-devel </span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<h4 id="创建操作目录"><a href="#创建操作目录" class="headerlink" title="创建操作目录"></a>创建操作目录</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~ &amp;&amp; mkdir -p fisco &amp;&amp; <span class="built_in">cd</span> fisco</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h4 id="创建操作目录"><a href="#创建操作目录" class="headerlink" title="创建操作目录"></a>创建操作目录</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~ &amp;&amp; <span class="built_in">mkdir</span> -p fisco &amp;&amp; <span class="built_in">cd</span> fisco</span><br></pre></td></tr></table></figure>
 <h4 id="下载build-chain-sh脚本"><a href="#下载build-chain-sh脚本" class="headerlink" title="下载build_chain.sh脚本"></a>下载build_chain.sh脚本</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -<span class="comment">#LO https://github.com/FISCO-BCOS/FISCO-BCOS/releases/download/v2.6.0/build_chain.sh &amp;&amp; chmod u+x build_chain.sh</span></span><br></pre></td></tr></table></figure>
+
 <h3 id="生成一条单群组4节点的FISCO链"><a href="#生成一条单群组4节点的FISCO链" class="headerlink" title="生成一条单群组4节点的FISCO链"></a>生成一条单群组4节点的FISCO链</h3><p>在fisco目录下执行下面的指令，生成一条单群组4节点的FISCO链.请确保机器的 30300-30303，20200-20203，8545-8548端口没有被占用。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash build_chain.sh -l 127.0.0.1:4 -p 30300,20200,8545 [参数]</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li>参数<ul>
 <li><code>-i</code> 默认<code>127.0.0.1</code>,加上参数<code>0.0.0.0</code>,使外网可以访问</li>
@@ -227,19 +229,25 @@
 </ul>
 </li>
 </ul>
-<p>命令执行成功会输出All completed。如果执行出错，请检查nodes/build.log文件中的错误信息。</p>
+<p>命令执行成功会输出All completed。如果执行出错，请检查nodes&#x2F;build.log文件中的错误信息。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">Checking fisco-bcos binary...</span><br><span class="line">Binary check passed.</span><br><span class="line">==============================================================</span><br><span class="line">Generating CA key...</span><br><span class="line">==============================================================</span><br><span class="line">Generating keys ...</span><br><span class="line">Processing IP:127.0.0.1 Total:4 Agency:agency Groups:1</span><br><span class="line">==============================================================</span><br><span class="line">Generating configurations...</span><br><span class="line">Processing IP:127.0.0.1 Total:4 Agency:agency Groups:1</span><br><span class="line">==============================================================</span><br><span class="line">[INFO] Execute the download_console.sh script <span class="keyword">in</span> directory named by IP to get FISCO-BCOS console.</span><br><span class="line">e.g.  bash /home/ubuntu/fisco/nodes/127.0.0.1/download_console.sh</span><br><span class="line">==============================================================</span><br><span class="line">[INFO] FISCO-BCOS Path   : bin/fisco-bcos</span><br><span class="line">[INFO] Start Port        : 30300 20200 8545</span><br><span class="line">[INFO] Server IP         : 127.0.0.1:4</span><br><span class="line">[INFO] Output Dir        : /home/ubuntu/fisco/nodes</span><br><span class="line">[INFO] CA Key Path       : /home/ubuntu/fisco/nodes/cert/ca.key</span><br><span class="line">==============================================================</span><br><span class="line">[INFO] All completed. Files <span class="keyword">in</span> /home/ubuntu/fisco/nodes</span><br></pre></td></tr></table></figure>
+
 
 <h3 id="启动FISCO-BCOS链"><a href="#启动FISCO-BCOS链" class="headerlink" title="启动FISCO BCOS链"></a>启动FISCO BCOS链</h3><p>启动所有节点</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash nodes/127.0.0.1/start_all.sh</span><br></pre></td></tr></table></figure>
+
 <p>停止所有节点</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash nodes/127.0.0.1/stop_all.sh</span><br></pre></td></tr></table></figure>
+
 <p>启动成功会输出类似下面内容的响应。否则请使用netstat -an | grep tcp检查机器的30300<del>30303，20200</del>20203，8545~8548端口是否被占用。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">try to start node0</span><br><span class="line">try to start node1</span><br><span class="line">try to start node2</span><br><span class="line">try to start node3</span><br><span class="line"> node1 start successfully</span><br><span class="line"> node2 start successfully</span><br><span class="line"> node0 start successfully</span><br><span class="line"> node3 start successfully</span><br></pre></td></tr></table></figure>
+
 <p>检查进程是否启动</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -ef | grep -v grep | grep fisco-bcos</span><br></pre></td></tr></table></figure>
+
 <p>正常情况会有类似下面的输出； 如果进程数不为4，则进程没有启动（一般是端口被占用导致的）</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">fisco       5453     1  1 17:11 pts/0    00:00:02 /home/ubuntu/fisco/nodes/127.0.0.1/node0/../fisco-bcos -c config.ini</span><br><span class="line">fisco       5459     1  1 17:11 pts/0    00:00:02 /home/ubuntu/fisco/nodes/127.0.0.1/node1/../fisco-bcos -c config.ini</span><br><span class="line">fisco       5464     1  1 17:11 pts/0    00:00:02 /home/ubuntu/fisco/nodes/127.0.0.1/node2/../fisco-bcos -c config.ini</span><br><span class="line">fisco       5476     1  1 17:11 pts/0    00:00:02 /home/ubuntu/fisco/nodes/127.0.0.1/node3/../fisco-bcos -c config.ini</span><br></pre></td></tr></table></figure>
+
 <h3 id="文章参考FISCO-BCOS官方文档"><a href="#文章参考FISCO-BCOS官方文档" class="headerlink" title="文章参考FISCO BCOS官方文档"></a>文章参考<a target="_blank" rel="noopener" href="https://fisco-bcos-documentation.readthedocs.io/zh_CN/latest/docs/installation.html">FISCO BCOS官方文档</a></h3>
     </div>
 
@@ -349,7 +357,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">25</span>
+          <span class="site-state-item-count">27</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
