@@ -126,3 +126,6 @@ feed:
   content_limit_delim: " "
   order_by: -date
   icon: icon.png
+
+aplayer:
+  meting: true       # MetingJS 支持
