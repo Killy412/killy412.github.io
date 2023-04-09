@@ -23,6 +23,8 @@ systemctl stop docker  # 停止
 ```
 <!-- more -->
 
+
+
 ### 设置镜像加速器
 
 ```bash
@@ -132,6 +134,18 @@ sudo docker login --username=killy412 registry.cn-beijing.aliyuncs.com
 # 注销
 docker logout
 ```
+
+- 自定义网络
+```bash
+# 创建自定义网络
+docker network create [my-network]
+# 将容器加入自定义网络中
+docker network connect [my-network] [container1]
+docker network connect [my-network] [container2]
+# 启动容器时指定网络
+docker run -it --net=[my-network] --name=[container1] [image1]
+```
+
 ## docker自定义hosts
 
 ### 启动时添加
@@ -162,7 +176,7 @@ docker pull daocloud.io/library/redis:5.0.5
 - 运行容器
 
 ```bash
-docker run -p 6379:6379 --name redis -v /redis/redis.conf:/etc/redis/redis.config -v /redis/data:/data -d redis:5.0.5 redis-server --appendonly yes  --requirepass "1qaz@WSX" # 设定密码
+docker run -p 6379:6379 --name redis -v /redis/redis.conf:/etc/redis/redis.config -v /redis/data:/data -d redis:5.0.5 redis-server --appendonly yes  --requirepass "password" # 设定密码
 ```
 
 ## docker 安装 mysql
@@ -176,7 +190,7 @@ docker pull mysql:8.0.15
 - 运行容器
 
 ```
-docker run -p 3306:3306 --restart=always --name mysql -e MYSQL_ROOT_PASSWORD=1qaz@WSX -v /mysql/conf/my.cnf:/etc/my.cnf -d mysql:8.0.15 --default-authentication-plugin=mysql_native_password
+docker run -p 3306:3306 --restart=always --name mysql -e MYSQL_ROOT_PASSWORD=[pass] -v /mysql/conf/my.cnf:/etc/my.cnf -d mysql:8.0.15 --default-authentication-plugin=mysql_native_password
 ```
 
 - 客户端连不上
@@ -189,7 +203,7 @@ docker run -p 3306:3306 --restart=always --name mysql -e MYSQL_ROOT_PASSWORD=1qa
 - 运行容器
 
 ```bash
-docker run -d --hostname rabbit-host --name rabbitmq --restart=always -e RABBITMQ_DEFAULT_USER=user -e RABBITMQ_DEFAULT_PASS=1qaz@WSX -p 15672:15672 -p 5672:5672 rabbitmq:3.7.15-management
+docker run -d --hostname rabbit-host --name rabbitmq --restart=always -e RABBITMQ_DEFAULT_USER=user -e RABBITMQ_DEFAULT_PASS=[pass] -p 15672:15672 -p 5672:5672 rabbitmq:3.7.15-management
 ```
 
 - --hostname：指定容器主机名称
