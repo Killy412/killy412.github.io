@@ -29,7 +29,7 @@
 <meta property="og:description" content="安装 Docker 虚拟机12345678yum install -y yum-utils # 安装依赖软件包yum-config-manager --add-repo https:&#x2F;&#x2F;mirrors.aliyun.com&#x2F;docker-ce&#x2F;linux&#x2F;centos&#x2F;docker-ce.repo #添加软件仓库 阿里云docker安装包yum makecache fast  # 启用缓存yum">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-11-09T14:03:47.000Z">
-<meta property="article:modified_time" content="2021-08-24T14:58:29.886Z">
+<meta property="article:modified_time" content="2023-05-20T06:04:37.716Z">
 <meta property="article:author" content="船夫">
 <meta property="article:tag" content="Docker">
 <meta property="article:tag" content="运维">
@@ -216,6 +216,8 @@
         <h2 id="安装-Docker-虚拟机"><a href="#安装-Docker-虚拟机" class="headerlink" title="安装 Docker 虚拟机"></a>安装 Docker 虚拟机</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">yum install -y yum-utils <span class="comment"># 安装依赖软件包</span></span><br><span class="line">yum-config-manager --add-repo https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo <span class="comment">#添加软件仓库 阿里云docker安装包</span></span><br><span class="line">yum makecache fast  <span class="comment"># 启用缓存</span></span><br><span class="line">yum list docker-ce --showduplicates | <span class="built_in">sort</span> -r  <span class="comment"># 查看版本 选择一个</span></span><br><span class="line">yum install docker-ce-&lt;version&gt; -y        <span class="comment"># 安装</span></span><br><span class="line">systemctl <span class="built_in">enable</span> docker <span class="comment"># 开机自启</span></span><br><span class="line">systemctl start docker  <span class="comment"># 启动</span></span><br><span class="line">systemctl stop docker  <span class="comment"># 停止</span></span><br></pre></td></tr></table></figure>
 <span id="more"></span>
 
+
+
 <h3 id="设置镜像加速器"><a href="#设置镜像加速器" class="headerlink" title="设置镜像加速器"></a>设置镜像加速器</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -sSL https://get.daocloud.io/daotools/set_mirror.sh | sh -s http://f1361db2.m.daocloud.io</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="string">&quot;registry-mirrors&quot;</span>:[<span class="string">&quot;https://docker.mirrors.ustc.edu.cn&quot;</span>]&#125;</span><br><span class="line">BashCC++C<span class="comment">#CSSGoHaskellHTMLJavaJavaScriptJSONJSXkotlinPHPPowerShellPythonRubyRustSQLSwiftTypeScriptXML</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## 新方法 编辑 /etc/docker/daemon.json</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;registry-mirrors&quot;</span>: [</span><br><span class="line">    <span class="string">&quot;https://dockerhub.azk8s.cn&quot;</span>,</span><br><span class="line">    <span class="string">&quot;https://reg-mirror.qiniu.com&quot;</span>,</span><br><span class="line">    <span class="string">&quot;https://registry.docker-cn.com&quot;</span></span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br><span class="line">sudo systemctl daemon-reload  <span class="comment"># 更新修改的配置文件</span></span><br></pre></td></tr></table></figure>
@@ -250,6 +252,10 @@
 <li>登录账号</li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 阿里云镜像仓库登录</span></span><br><span class="line">sudo docker login --username=killy412 registry.cn-beijing.aliyuncs.com</span><br><span class="line"><span class="comment"># 注销</span></span><br><span class="line">docker <span class="built_in">logout</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>自定义网络<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建自定义网络</span></span><br><span class="line">docker network create [my-network]</span><br><span class="line"><span class="comment"># 将容器加入自定义网络中</span></span><br><span class="line">docker network connect [my-network] [container1]</span><br><span class="line">docker network connect [my-network] [container2]</span><br><span class="line"><span class="comment"># 启动容器时指定网络</span></span><br><span class="line">docker run -it --net=[my-network] --name=[container1] [image1]</span><br></pre></td></tr></table></figure></li>
+</ul>
 <h2 id="docker自定义hosts"><a href="#docker自定义hosts" class="headerlink" title="docker自定义hosts"></a>docker自定义hosts</h2><h3 id="启动时添加"><a href="#启动时添加" class="headerlink" title="启动时添加"></a>启动时添加</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker run -it -d --name test --add-host=hostname:127.0.0.1 test:latest</span><br><span class="line">                              --add-host=&lt;yuming&gt;:&lt;ip&gt; --add-host=&lt;yuming&gt;:&lt;ip&gt;</span><br><span class="line">                              --add-host=&quot;yuming yuming2&quot;:&lt;ip&gt;</span><br></pre></td></tr></table></figure>
 <p>–add-host 最好在–name参数后面</p>
 <h3 id="在docker-compose-yml文件中添加"><a href="#在docker-compose-yml文件中添加" class="headerlink" title="在docker-compose.yml文件中添加"></a>在<code>docker-compose.yml</code>文件中添加</h3><p>通过配置参数extra_hosts来实现</p>
@@ -263,7 +269,7 @@
 <ul>
 <li>运行容器</li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -p 6379:6379 --name redis -v /redis/redis.conf:/etc/redis/redis.config -v /redis/data:/data -d redis:5.0.5 redis-server --appendonly <span class="built_in">yes</span>  --requirepass <span class="string">&quot;1qaz@WSX&quot;</span> <span class="comment"># 设定密码</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -p 6379:6379 --name redis -v /redis/redis.conf:/etc/redis/redis.config -v /redis/data:/data -d redis:5.0.5 redis-server --appendonly <span class="built_in">yes</span>  --requirepass <span class="string">&quot;password&quot;</span> <span class="comment"># 设定密码</span></span><br></pre></td></tr></table></figure>
 
 <h2 id="docker-安装-mysql"><a href="#docker-安装-mysql" class="headerlink" title="docker 安装 mysql"></a>docker 安装 mysql</h2><ul>
 <li>拉取镜像</li>
@@ -273,7 +279,7 @@
 <ul>
 <li>运行容器</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -p 3306:3306 --restart=always --name mysql -e MYSQL_ROOT_PASSWORD=1qaz@WSX -v /mysql/conf/my.cnf:/etc/my.cnf -d mysql:8.0.15 --default-authentication-plugin=mysql_native_password</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -p 3306:3306 --restart=always --name mysql -e MYSQL_ROOT_PASSWORD=[pass] -v /mysql/conf/my.cnf:/etc/my.cnf -d mysql:8.0.15 --default-authentication-plugin=mysql_native_password</span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>客户端连不上</li>
@@ -285,7 +291,7 @@
 <h2 id="docker-安装-rabbitmq"><a href="#docker-安装-rabbitmq" class="headerlink" title="docker 安装 rabbitmq"></a>docker 安装 rabbitmq</h2><ul>
 <li>运行容器</li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d --hostname rabbit-host --name rabbitmq --restart=always -e RABBITMQ_DEFAULT_USER=user -e RABBITMQ_DEFAULT_PASS=1qaz@WSX -p 15672:15672 -p 5672:5672 rabbitmq:3.7.15-management</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d --hostname rabbit-host --name rabbitmq --restart=always -e RABBITMQ_DEFAULT_USER=user -e RABBITMQ_DEFAULT_PASS=[pass] -p 15672:15672 -p 5672:5672 rabbitmq:3.7.15-management</span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>–hostname：指定容器主机名称</li>
