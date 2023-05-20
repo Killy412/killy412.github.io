@@ -60,13 +60,13 @@ scp -r /opt/soft/test root@xx.xx.x.xx:/opt/soft/scptest
 grep [-acinv] [--color=auto] '搜寻字符串' [filename]
 选项与参数：
 -i:忽略大小写的不同，所以大小写视为相同
--q:
--E:
+-E:可以使用正则表达式
 -n:顺便输出行号
 -r:递归文件夹下的所有子文件
 -l, --files-with-matches  只打印有匹配的<文件>的名称
 -a:将 binary 文件以 text 文件的方式搜寻数据
 -c:计算找到 '搜寻字符串' 的次数
+-C:显示前后的行数
 -I:忽略二进制文件
 -v:反向选择，亦即显示出没有 '搜寻字符串' 内容的那一行！
 -L, --files-without-match  只打印没有匹配上的<文件>的名称
