@@ -1,0 +1,479 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>ik&#39;s blog</title>
+  <icon>https://blog.freekilly.com/icon.png</icon>
+  <subtitle>生命不熄，折腾不止</subtitle>
+  <link href="https://blog.freekilly.com/atom.xml" rel="self"/>
+  
+  <link href="https://blog.freekilly.com/"/>
+  <updated>2024-12-19T03:44:33.086Z</updated>
+  <id>https://blog.freekilly.com/</id>
+  
+  <author>
+    <name>船夫</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>随笔(四)</title>
+    <link href="https://blog.freekilly.com/2023/03/11/%E9%9A%8F%E7%AC%94(%E5%9B%9B)/"/>
+    <id>https://blog.freekilly.com/2023/03/11/%E9%9A%8F%E7%AC%94(%E5%9B%9B)/</id>
+    <published>2023-03-11T08:12:30.000Z</published>
+    <updated>2024-12-19T03:44:33.086Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;去年G生病是一个契机，让我和C重新联系上了。今年春节联系的稍微多了一些，然后就开始对我问东问西，想对我予以教育。同时昨天很多年没见面的老友(C的朋友)M相聚，因为C而认识，十多年未见面。相聚中M给C打了一个视频，秒接，热情的招呼M‘弟弟’，同时直接把摄像头转向桌子上，桌子上是正在打牌，然后M把摄像头对向了我，C直接把视频挂了。。。再打回来的时候说，刚才在看人打牌呢。。。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="随笔" scheme="https://blog.freekilly.com/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+    <category term="随笔" scheme="https://blog.freekilly.com/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>随笔(三)</title>
+    <link href="https://blog.freekilly.com/2023/03/11/%E9%9A%8F%E7%AC%94(%E4%B8%89)/"/>
+    <id>https://blog.freekilly.com/2023/03/11/%E9%9A%8F%E7%AC%94(%E4%B8%89)/</id>
+    <published>2023-03-11T07:45:05.000Z</published>
+    <updated>2024-12-19T03:44:33.085Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;前几天会见了一个十多年未见的老友M，我们初中开始认识，在十六七的年纪一块玩过几年，每天就是抽烟打牌看黄片，我不打牌，因为那时候我只有生活费，没有多余的钱去赌博。M离开那家煤矿后就再也没有见过也没有联系了，他去闯荡世界了。这几年我在HC工作，他最近碰巧也在HC，所以又聚一块喝了顿酒。聊了很多他的经历，关于所遇到的女人，关于事业上的闯荡，让我了解到’底层人民’的生活。同时也发现自己身上的很多东西都是那时留下的，他们对我有一定的影响。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="随笔" scheme="https://blog.freekilly.com/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+    <category term="随笔" scheme="https://blog.freekilly.com/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>基于Redis发布订阅和策略模式实现延迟事件处理</title>
+    <link href="https://blog.freekilly.com/2023/03/10/%E5%9F%BA%E4%BA%8ERedis%E5%8F%91%E5%B8%83%E8%AE%A2%E9%98%85%E5%92%8C%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F%E5%AE%9E%E7%8E%B0%E5%BB%B6%E8%BF%9F%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86/"/>
+    <id>https://blog.freekilly.com/2023/03/10/%E5%9F%BA%E4%BA%8ERedis%E5%8F%91%E5%B8%83%E8%AE%A2%E9%98%85%E5%92%8C%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F%E5%AE%9E%E7%8E%B0%E5%BB%B6%E8%BF%9F%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86/</id>
+    <published>2023-03-10T07:48:40.000Z</published>
+    <updated>2024-12-19T03:44:33.084Z</updated>
+    
+    
+    <summary type="html">&lt;h3 id=&quot;需求&quot;&gt;&lt;a href=&quot;#需求&quot; class=&quot;headerlink&quot; title=&quot;需求&quot;&gt;&lt;/a&gt;需求&lt;/h3&gt;&lt;p&gt;有这样的需求，用户发起一个活动(有人数限制和活动时间填写)，其他用户可以报名，报名人数满了之后就算成团，需要在活动开始之前提醒用户，活动开始时有对应业务处理，活动结束的时候有业务逻辑处理。这个功能如何设计？&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="解决方案设计" scheme="https://blog.freekilly.com/categories/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%E8%AE%BE%E8%AE%A1/"/>
+    
+    <category term="设计模式" scheme="https://blog.freekilly.com/categories/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%E8%AE%BE%E8%AE%A1/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+    
+    <category term="Redis" scheme="https://blog.freekilly.com/tags/Redis/"/>
+    
+    <category term="设计模式" scheme="https://blog.freekilly.com/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+    <category term="策略模式" scheme="https://blog.freekilly.com/tags/%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>随笔(二)</title>
+    <link href="https://blog.freekilly.com/2023/03/09/%E9%9A%8F%E7%AC%94(%E4%BA%8C)/"/>
+    <id>https://blog.freekilly.com/2023/03/09/%E9%9A%8F%E7%AC%94(%E4%BA%8C)/</id>
+    <published>2023-03-09T05:31:05.000Z</published>
+    <updated>2024-12-19T03:44:33.085Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;今天面试把自己身上的缺点暴露无遗。比如不擅沟通&amp;#x2F;记忆力不好&amp;#x2F;不擅人情事故。 &lt;/p&gt;
+&lt;p&gt;不善沟通从小遗留的问题，成长环境造成的怕生，面对一切都是畏畏缩缩，想在成人之后改掉很难，需要克服成长期形成的习惯。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="随笔" scheme="https://blog.freekilly.com/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+    <category term="随笔" scheme="https://blog.freekilly.com/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>随笔(一)</title>
+    <link href="https://blog.freekilly.com/2023/03/04/%E9%9A%8F%E7%AC%94(%E4%B8%80)/"/>
+    <id>https://blog.freekilly.com/2023/03/04/%E9%9A%8F%E7%AC%94(%E4%B8%80)/</id>
+    <published>2023-03-04T06:08:34.000Z</published>
+    <updated>2024-12-19T03:44:33.085Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;想想《黄金时代》中那个令人深思的二十一岁吧：「那一天我二十一岁，在我一生的黄金时代。我有好多奢望。我想爱，想吃，还想在一瞬间变成天上半明半暗的云。后来我才知道，生活就是个缓慢受锤的过程，人一天天老下去，奢望也一天天消失，最后变得像挨了锤的牛一样。可是我过二十一岁生日时没有预见到这一点。我觉得自己会永远生猛下去，什么也锤不我。」&lt;br&gt;今年二十七了，我觉得自己仍然在寻求一个回答：「我不相信天是蓝的，我不相信雷的回声，我不相信梦是假的，我不相信死无报应。」&lt;/p&gt;
+&lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="随笔" scheme="https://blog.freekilly.com/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+    <category term="随笔" scheme="https://blog.freekilly.com/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+    <category term="摘抄" scheme="https://blog.freekilly.com/tags/%E6%91%98%E6%8A%84/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Linux使用Clash科学上网</title>
+    <link href="https://blog.freekilly.com/2022/01/21/Linux%E4%BD%BF%E7%94%A8Clash%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/"/>
+    <id>https://blog.freekilly.com/2022/01/21/Linux%E4%BD%BF%E7%94%A8Clash%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/</id>
+    <published>2022-01-21T14:57:59.000Z</published>
+    <updated>2024-12-19T03:44:33.084Z</updated>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;安装Clash&quot;&gt;&lt;a href=&quot;#安装Clash&quot; class=&quot;headerlink&quot; title=&quot;安装Clash&quot;&gt;&lt;/a&gt;安装Clash&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/Dreamacro/clash/releases&quot;&gt;官方下载&lt;/a&gt;,选择一个合适电脑架构的.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;解压缩,并且赋予执行权限&lt;/p&gt;
+&lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;cd&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;mkdir clash &amp;amp;&amp;amp; cd clash&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;gzip clash.gz&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;sudo chmod +x clash&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/li&gt;
+&lt;/ol&gt;</summary>
+    
+    
+    
+    <category term="Linux" scheme="https://blog.freekilly.com/categories/Linux/"/>
+    
+    
+    <category term="Linux" scheme="https://blog.freekilly.com/tags/Linux/"/>
+    
+    <category term="科学上网" scheme="https://blog.freekilly.com/tags/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>胃癌术后饮食</title>
+    <link href="https://blog.freekilly.com/2021/12/13/%E8%83%83%E7%99%8C%E6%9C%AF%E5%90%8E%E9%A5%AE%E9%A3%9F/"/>
+    <id>https://blog.freekilly.com/2021/12/13/%E8%83%83%E7%99%8C%E6%9C%AF%E5%90%8E%E9%A5%AE%E9%A3%9F/</id>
+    <published>2021-12-13T15:27:41.000Z</published>
+    <updated>2024-12-19T03:44:33.085Z</updated>
+    
+    
+    <summary type="html">&lt;h3 id=&quot;饮食&quot;&gt;&lt;a href=&quot;#饮食&quot; class=&quot;headerlink&quot; title=&quot;饮食&quot;&gt;&lt;/a&gt;饮食&lt;/h3&gt;&lt;p&gt;术后初期可以汤类，之后一周一周观察，流食慢慢变稠一些，同时可以用破壁机做少量果泥，每天一口两口的加量。差不多一个多月就可以吃软面条了。馒头泡浓菜汤里弄烂也可以。深海鱼，没刺那种，做粥。最好是小米，实在吃烦的话可以换成大米。藕粉也不错。所有汤啊，粥啊，都加蛋白粉。术后初期忌食牛奶、豆类制品，容易胀气。&lt;/p&gt;
+&lt;p&gt;重点提一下，破壁机有超高利用率！比如炖好的排骨淮山药，加少量汤，加馒头，打碎，浓稠的东西，每天逐渐加量吃。&lt;/p&gt;
+&lt;p&gt;最好是馒头，不要米饭，因为馒头发酵过，好消化利吸收。&lt;/p&gt;
+&lt;p&gt;但是，只喝汤肯定不行！只喝汤肯定不行！！只喝汤肯定不行！！！要肉，菜，主食尽量均衡！&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="生活" scheme="https://blog.freekilly.com/categories/%E7%94%9F%E6%B4%BB/"/>
+    
+    
+    <category term="生活" scheme="https://blog.freekilly.com/tags/%E7%94%9F%E6%B4%BB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>全新服务器环境搭建(Docker+jre+mysql+nginx)</title>
+    <link href="https://blog.freekilly.com/2021/07/02/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/"/>
+    <id>https://blog.freekilly.com/2021/07/02/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</id>
+    <published>2021-07-02T09:53:47.000Z</published>
+    <updated>2024-12-19T03:44:33.085Z</updated>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;全新服务器环境搭建-Docker-jre-mysql-nginx&quot;&gt;&lt;a href=&quot;#全新服务器环境搭建-Docker-jre-mysql-nginx&quot; class=&quot;headerlink&quot; title=&quot;全新服务器环境搭建(Docker+jre+mysql+nginx)&quot;&gt;&lt;/a&gt;全新服务器环境搭建(Docker+jre+mysql+nginx)&lt;/h2&gt;&lt;h3 id=&quot;一-Docker安装&quot;&gt;&lt;a href=&quot;#一-Docker安装&quot; class=&quot;headerlink&quot; title=&quot;一. Docker安装&quot;&gt;&lt;/a&gt;一. Docker安装&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;安装docker&lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;curl -sSL https://get.daocloud.io/docker | sh&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
+    
+    
+    
+    <category term="Linux" scheme="https://blog.freekilly.com/categories/Linux/"/>
+    
+    
+    <category term="Docker" scheme="https://blog.freekilly.com/tags/Docker/"/>
+    
+    <category term="Linux" scheme="https://blog.freekilly.com/tags/Linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>2021半年展望及总结</title>
+    <link href="https://blog.freekilly.com/2021/07/02/2021%E5%8D%8A%E5%B9%B4%E5%B1%95%E6%9C%9B%E5%8F%8A%E6%80%BB%E7%BB%93/"/>
+    <id>https://blog.freekilly.com/2021/07/02/2021%E5%8D%8A%E5%B9%B4%E5%B1%95%E6%9C%9B%E5%8F%8A%E6%80%BB%E7%BB%93/</id>
+    <published>2021-07-02T00:46:00.000Z</published>
+    <updated>2024-12-19T03:44:33.083Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;/assets/css/APlayer.min.css&quot;&gt;&lt;script src=&quot;/assets/js/APlayer.min.js&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="年度总结" scheme="https://blog.freekilly.com/categories/%E5%B9%B4%E5%BA%A6%E6%80%BB%E7%BB%93/"/>
+    
+    
+    <category term="总结" scheme="https://blog.freekilly.com/tags/%E6%80%BB%E7%BB%93/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Netty-NIO基础</title>
+    <link href="https://blog.freekilly.com/2021/06/27/Netty-NIO%E5%9F%BA%E7%A1%80/"/>
+    <id>https://blog.freekilly.com/2021/06/27/Netty-NIO%E5%9F%BA%E7%A1%80/</id>
+    <published>2021-06-27T14:25:47.000Z</published>
+    <updated>2024-12-19T03:44:33.084Z</updated>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;IO基础知识&quot;&gt;&lt;a href=&quot;#IO基础知识&quot; class=&quot;headerlink&quot; title=&quot;IO基础知识&quot;&gt;&lt;/a&gt;IO基础知识&lt;/h2&gt;&lt;p&gt;在1.4版本之前，Java IO类库是阻塞IO；从1.4版本开始，引进了新的异步IO库，被称为JavaNew IO类库，简称为JAVA NIO.New IO类库的目标，就是要让Java支持非阻塞IO，基于这个原因，更多的人喜欢称Java NIO为非阻塞IO（Non-Block IO），称“老的”阻塞式Java IO为OIO（Old IO）。总体上说，NIO弥补了原来面向流的OIO同步阻塞的不足，它为标准Java代码提供了高速的、面向缓冲区的IO。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="Netty" scheme="https://blog.freekilly.com/categories/Netty/"/>
+    
+    
+    <category term="Netty" scheme="https://blog.freekilly.com/tags/Netty/"/>
+    
+    <category term="NIO" scheme="https://blog.freekilly.com/tags/NIO/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>深入理解JVM虚拟机-类加载</title>
+    <link href="https://blog.freekilly.com/2021/05/17/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3JVM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E7%B1%BB%E5%8A%A0%E8%BD%BD/"/>
+    <id>https://blog.freekilly.com/2021/05/17/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3JVM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E7%B1%BB%E5%8A%A0%E8%BD%BD/</id>
+    <published>2021-05-17T12:44:31.000Z</published>
+    <updated>2024-12-19T03:44:33.085Z</updated>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;类的生命周期&quot;&gt;&lt;a href=&quot;#类的生命周期&quot; class=&quot;headerlink&quot; title=&quot;类的生命周期&quot;&gt;&lt;/a&gt;类的生命周期&lt;/h2&gt;&lt;p&gt;主要分为&lt;strong&gt;加载-&amp;gt;链接-&amp;gt;初始化-&amp;gt;使用-&amp;gt;卸载&lt;/strong&gt;几个过程. &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;加载&lt;/p&gt;
+&lt;p&gt;跟去类的全限定名找到对应的class字节码文件,读取class文件,把静态数据结构转化为运行时数据结构,创建一个class对象,作为数据访问的入口.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;链接&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;验证: 检查字节码文件是否符合jvm规范,是否会危害jvm的安全.&lt;/li&gt;
+&lt;li&gt;准备: 为static变量分配内存,同时赋初始值.&lt;/li&gt;
+&lt;li&gt;解析: 把常量池中的符号引用转为直接引用.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;初始化.&lt;/p&gt;
+&lt;p&gt;执行类构造器&lt;code&gt;clinit()&lt;/code&gt;函数,是由static变量赋值和static代码块组合而成.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;遇到new&amp;#x2F;getstatic&amp;#x2F;putstatic&amp;#x2F;invokestatic才会执行类的初始化过程.&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</summary>
+    
+    
+    
+    <category term="JVM" scheme="https://blog.freekilly.com/categories/JVM/"/>
+    
+    
+    <category term="JVM" scheme="https://blog.freekilly.com/tags/JVM/"/>
+    
+    <category term="类加载机制" scheme="https://blog.freekilly.com/tags/%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>并发之AQS</title>
+    <link href="https://blog.freekilly.com/2021/05/02/%E5%B9%B6%E5%8F%91%E4%B9%8BAQS/"/>
+    <id>https://blog.freekilly.com/2021/05/02/%E5%B9%B6%E5%8F%91%E4%B9%8BAQS/</id>
+    <published>2021-05-02T09:53:47.000Z</published>
+    <updated>2024-12-19T03:44:33.085Z</updated>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;并发之同步器-AbstractQueueSynchronize&quot;&gt;&lt;a href=&quot;#并发之同步器-AbstractQueueSynchronize&quot; class=&quot;headerlink&quot; title=&quot;并发之同步器(AbstractQueueSynchronize)&quot;&gt;&lt;/a&gt;并发之同步器(AbstractQueueSynchronize)&lt;/h2&gt;&lt;p&gt;同步器是juc并发包中并发工具的基础,很多经常使用的同步工具类都是基于aqs实现的.例如ReentrantLock,CountDownLatch,Semphore等.&lt;/p&gt;
+&lt;p&gt;基本的实现方式是通过一个state变量控制资源是否已经被占用,以及一个CLH队列实现.&lt;/p&gt;
+&lt;h3 id=&quot;为什么要使用AQS-和synchronized相比有什么优势&quot;&gt;&lt;a href=&quot;#为什么要使用AQS-和synchronized相比有什么优势&quot; class=&quot;headerlink&quot; title=&quot;为什么要使用AQS,和synchronized相比有什么优势&quot;&gt;&lt;/a&gt;为什么要使用AQS,和synchronized相比有什么优势&lt;/h3&gt;</summary>
+    
+    
+    
+    <category term="并发" scheme="https://blog.freekilly.com/categories/%E5%B9%B6%E5%8F%91/"/>
+    
+    
+    <category term="并发" scheme="https://blog.freekilly.com/tags/%E5%B9%B6%E5%8F%91/"/>
+    
+    <category term="AQS" scheme="https://blog.freekilly.com/tags/AQS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>关于生产环境OOM问题的排查</title>
+    <link href="https://blog.freekilly.com/2021/03/28/%E5%85%B3%E4%BA%8E%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83OOM%E9%97%AE%E9%A2%98%E7%9A%84%E6%8E%92%E6%9F%A5/"/>
+    <id>https://blog.freekilly.com/2021/03/28/%E5%85%B3%E4%BA%8E%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83OOM%E9%97%AE%E9%A2%98%E7%9A%84%E6%8E%92%E6%9F%A5/</id>
+    <published>2021-03-28T11:09:30.000Z</published>
+    <updated>2024-12-19T03:44:33.084Z</updated>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;概要&quot;&gt;&lt;a href=&quot;#概要&quot; class=&quot;headerlink&quot; title=&quot;概要&quot;&gt;&lt;/a&gt;概要&lt;/h2&gt;&lt;p&gt;在三月中开始的时候,线上突然经常报出 oom,刚开始怀疑那几天提交的代码有问题,因为之前没有报出来过. 代码排查了几遍,没发现有什么问题. 然后把 oom 时的内存信息 dump 下来使用 jvisualvm 进行分析,发现是 jdbc 查询时,有一个 DataResultSet 对象非常大,占用 1.9g 内存. 感觉是找到了问题的原因,但是找不到问题发生的地方,dump 下来了好几个内存快照,每次 oom 时的栈信息都不一样,但是都有这个 1.9g 的对象. 因为数据库有 600 多张表,整个系统业务很多,根本找不到是哪里查询时的占用的内存.&lt;/p&gt;
+&lt;p&gt;然后对其中一台机器尝试过进行 jvm 参数调优,调大了堆,垃圾回收器换成了 CMS+ParNew,日常这种垃圾回收器表现比未调优之前要好,但是依然报出过 oom,报 oom 那段时间一直 fgc,gc 的时间能达到三千多秒…&lt;/p&gt;
+&lt;p&gt;现在主要就是找到创建这个DataResultSet对象时的代码处.&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="OOM" scheme="https://blog.freekilly.com/categories/OOM/"/>
+    
+    
+    <category term="OOM" scheme="https://blog.freekilly.com/tags/OOM/"/>
+    
+    <category term="解决过程" scheme="https://blog.freekilly.com/tags/%E8%A7%A3%E5%86%B3%E8%BF%87%E7%A8%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Git常用命令</title>
+    <link href="https://blog.freekilly.com/2021/02/04/Git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"/>
+    <id>https://blog.freekilly.com/2021/02/04/Git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</id>
+    <published>2021-02-04T01:43:27.000Z</published>
+    <updated>2024-12-19T03:44:33.084Z</updated>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;Git-常用命令&quot;&gt;&lt;a href=&quot;#Git-常用命令&quot; class=&quot;headerlink&quot; title=&quot;Git 常用命令&quot;&gt;&lt;/a&gt;Git 常用命令&lt;/h2&gt;&lt;h3 id=&quot;创建版本库&quot;&gt;&lt;a href=&quot;#创建版本库&quot; class=&quot;headerlink&quot; title=&quot;创建版本库&quot;&gt;&lt;/a&gt;创建版本库&lt;/h3&gt;&lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;git init  #初始化 git 本地仓库&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;git add xxx #添加文件到本地库&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;git commit -m &amp;quot;&amp;quot; #提交文件&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta prompt_&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;language-bash&quot;&gt;本地库和远程库关联&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;git remote add name(本地库名字) git@github.com:path(用户名)/xxx.git(仓库名)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;git remote add 本地库名字 远程仓库路径&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
+    
+    
+    
+    <category term="Git" scheme="https://blog.freekilly.com/categories/Git/"/>
+    
+    
+    <category term="Git" scheme="https://blog.freekilly.com/tags/Git/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>深入理解JVM虚拟机-内存</title>
+    <link href="https://blog.freekilly.com/2021/01/30/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3JVM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E5%86%85%E5%AD%98/"/>
+    <id>https://blog.freekilly.com/2021/01/30/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3JVM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E5%86%85%E5%AD%98/</id>
+    <published>2021-01-30T02:47:53.000Z</published>
+    <updated>2024-12-19T03:44:33.085Z</updated>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;运行时数据区域&quot;&gt;&lt;a href=&quot;#运行时数据区域&quot; class=&quot;headerlink&quot; title=&quot;运行时数据区域&quot;&gt;&lt;/a&gt;运行时数据区域&lt;/h2&gt;&lt;h3 id=&quot;程序计数器&quot;&gt;&lt;a href=&quot;#程序计数器&quot; class=&quot;headerlink&quot; title=&quot;程序计数器&quot;&gt;&lt;/a&gt;程序计数器&lt;/h3&gt;&lt;p&gt;(PC Register),记录当前线程执行程序的位置,改变计数器的值确定下一条执行的指令,线程私有.&lt;br&gt;程序计数器是唯一不会出现 &lt;code&gt;OOM&lt;/code&gt; 情况的内存区域&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="JVM" scheme="https://blog.freekilly.com/categories/JVM/"/>
+    
+    
+    <category term="JVM" scheme="https://blog.freekilly.com/tags/JVM/"/>
+    
+    <category term="内存详解" scheme="https://blog.freekilly.com/tags/%E5%86%85%E5%AD%98%E8%AF%A6%E8%A7%A3/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Linux常用命令</title>
+    <link href="https://blog.freekilly.com/2021/01/24/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"/>
+    <id>https://blog.freekilly.com/2021/01/24/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</id>
+    <published>2021-01-23T16:32:11.000Z</published>
+    <updated>2024-12-19T03:44:33.084Z</updated>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;常用命令&quot;&gt;&lt;a href=&quot;#常用命令&quot; class=&quot;headerlink&quot; title=&quot;常用命令&quot;&gt;&lt;/a&gt;常用命令&lt;/h2&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 查看某个进程的子进程&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;pstree -p [pid]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 查看进程中子线程的资源占用情况&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;top -Hp [pid]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;top -n 1 -H -p [pid]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 查看磁盘情况&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;df&lt;/span&gt; -hl&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 查找程序&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;ps -ef | grep -v grep | grep fisco-bcos&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 查看端口占用情况&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;netstat -ano | grep tcp |grep 8545&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;netstat -tnlp | grep ssh&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;netstat -anpt| grep ssh&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 查看端口占用进程&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;lsof -i:&amp;lt;端口&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 添加执行权限&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;chmod&lt;/span&gt; a+x &amp;lt;文件名&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
+    
+    
+    
+    <category term="Linux" scheme="https://blog.freekilly.com/categories/Linux/"/>
+    
+    
+    <category term="Linux" scheme="https://blog.freekilly.com/tags/Linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>设计模式之代理</title>
+    <link href="https://blog.freekilly.com/2021/01/24/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E4%BB%A3%E7%90%86/"/>
+    <id>https://blog.freekilly.com/2021/01/24/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E4%BB%A3%E7%90%86/</id>
+    <published>2021-01-23T16:32:00.000Z</published>
+    <updated>2024-12-19T03:44:33.085Z</updated>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h2&gt;&lt;p&gt;代理主要分为两种,静态代理和动态代理. 动态代理又分&lt;code&gt;jdk&lt;/code&gt;动态代理和&lt;code&gt;cglib&lt;/code&gt;动态代理.&lt;/p&gt;
+&lt;p&gt;静态代理是纯编码完成的,在编译完成的时候已经确认好类信息等.&lt;/p&gt;
+&lt;p&gt;动态代理是在运行时动态生成的类字节码,并且加载到&lt;code&gt;jvm&lt;/code&gt;中.&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="设计模式" scheme="https://blog.freekilly.com/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+    
+    <category term="设计模式" scheme="https://blog.freekilly.com/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+    <category term="代理" scheme="https://blog.freekilly.com/tags/%E4%BB%A3%E7%90%86/"/>
+    
+    <category term="动态代理" scheme="https://blog.freekilly.com/tags/%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>深入理解JVM虚拟机-GC</title>
+    <link href="https://blog.freekilly.com/2021/01/19/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3JVM%E8%99%9A%E6%8B%9F%E6%9C%BA-GC/"/>
+    <id>https://blog.freekilly.com/2021/01/19/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3JVM%E8%99%9A%E6%8B%9F%E6%9C%BA-GC/</id>
+    <published>2021-01-19T13:07:53.000Z</published>
+    <updated>2024-12-19T03:44:33.085Z</updated>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;垃圾收集需要完成的三件事&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;哪些内存需要回收?&lt;/li&gt;
+&lt;li&gt;什么时候回收?&lt;/li&gt;
+&lt;li&gt;如何回收?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="JVM" scheme="https://blog.freekilly.com/categories/JVM/"/>
+    
+    
+    <category term="JVM" scheme="https://blog.freekilly.com/tags/JVM/"/>
+    
+    <category term="GC" scheme="https://blog.freekilly.com/tags/GC/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>IDEA显示Run Dashboard的方式和重置试用期以及常用插件(不定时更新..)</title>
+    <link href="https://blog.freekilly.com/2021/01/02/IDEA%E6%98%BE%E7%A4%BARun-Dashboard%E7%9A%84%E6%96%B9%E5%BC%8F%E5%92%8C%E9%87%8D%E7%BD%AE%E8%AF%95%E7%94%A8%E6%9C%9F%E4%BB%A5%E5%8F%8A%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6-%E4%B8%8D%E5%AE%9A%E6%97%B6%E6%9B%B4%E6%96%B0/"/>
+    <id>https://blog.freekilly.com/2021/01/02/IDEA%E6%98%BE%E7%A4%BARun-Dashboard%E7%9A%84%E6%96%B9%E5%BC%8F%E5%92%8C%E9%87%8D%E7%BD%AE%E8%AF%95%E7%94%A8%E6%9C%9F%E4%BB%A5%E5%8F%8A%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6-%E4%B8%8D%E5%AE%9A%E6%97%B6%E6%9B%B4%E6%96%B0/</id>
+    <published>2021-01-02T04:48:30.000Z</published>
+    <updated>2024-12-19T03:44:33.084Z</updated>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;IDEA-显示-Run-Dashboard-的方式&quot;&gt;&lt;a href=&quot;#IDEA-显示-Run-Dashboard-的方式&quot; class=&quot;headerlink&quot; title=&quot;IDEA 显示 Run Dashboard 的方式&quot;&gt;&lt;/a&gt;IDEA 显示 Run Dashboard 的方式&lt;/h2&gt;&lt;p&gt;在.idea 文件夹下面找到 workspace.xml 文件, 添加以下标签&lt;/p&gt;
+&lt;figure class=&quot;highlight xml&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;component&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&amp;quot;RunDashboard&amp;quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;option&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&amp;quot;configurationTypes&amp;quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;set&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;option&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;value&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&amp;quot;SpringBootApplicationConfigurationType&amp;quot;&lt;/span&gt; /&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;set&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;option&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;component&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
+    
+    
+    
+    <category term="工具" scheme="https://blog.freekilly.com/categories/%E5%B7%A5%E5%85%B7/"/>
+    
+    
+    <category term="工具" scheme="https://blog.freekilly.com/tags/%E5%B7%A5%E5%85%B7/"/>
+    
+    <category term="IDEA" scheme="https://blog.freekilly.com/tags/IDEA/"/>
+    
+    <category term="插件" scheme="https://blog.freekilly.com/tags/%E6%8F%92%E4%BB%B6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>2020总结以及新年展望</title>
+    <link href="https://blog.freekilly.com/2021/01/01/2020%E6%80%BB%E7%BB%93%E4%BB%A5%E5%8F%8A%E6%96%B0%E5%B9%B4%E5%B1%95%E6%9C%9B/"/>
+    <id>https://blog.freekilly.com/2021/01/01/2020%E6%80%BB%E7%BB%93%E4%BB%A5%E5%8F%8A%E6%96%B0%E5%B9%B4%E5%B1%95%E6%9C%9B/</id>
+    <published>2021-01-01T05:51:00.000Z</published>
+    <updated>2024-12-19T03:44:33.083Z</updated>
+    
+    
+    <summary type="html">&lt;h3 id=&quot;2020-总结&quot;&gt;&lt;a href=&quot;#2020-总结&quot; class=&quot;headerlink&quot; title=&quot;2020 总结&quot;&gt;&lt;/a&gt;2020 总结&lt;/h3&gt;&lt;p&gt;不出意外给 20 年定的小目标没有实现,但是 19 年立下的三年 flag 实现了. 虽然那个 flag 级别有点低. 总结一下今年,跳槽两次,工资翻番(主要起点比较低). 下次跳槽已在计划之中.. 在上家公司从头搭了个分布式框架.使用容器部署了分布式集群. 应付面试和入职不太忙的这段时间看了几本书.&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="年度总结" scheme="https://blog.freekilly.com/categories/%E5%B9%B4%E5%BA%A6%E6%80%BB%E7%BB%93/"/>
+    
+    
+    <category term="总结" scheme="https://blog.freekilly.com/tags/%E6%80%BB%E7%BB%93/"/>
+    
+  </entry>
+  
+</feed>

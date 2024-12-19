@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="baidu-site-verification" content="code-nOjQJ0W9P3">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"blog.freekilly.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="常用命令1234567891011121314151617# 查看某个进程的子进程pstree -p [pid]# 查看进程中子线程的资源占用情况top -Hp [pid]top -n 1 -H -p [pid]# 查看磁盘情况df -hl# 查找程序ps -ef | grep -v grep | grep fisco-bcos# 查看端口占用情况netstat -ano | grep tcp |">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux常用命令">
+<meta property="og:url" content="https://blog.freekilly.com/2021/01/24/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/index.html">
+<meta property="og:site_name" content="ik&#39;s blog">
+<meta property="og:description" content="常用命令1234567891011121314151617# 查看某个进程的子进程pstree -p [pid]# 查看进程中子线程的资源占用情况top -Hp [pid]top -n 1 -H -p [pid]# 查看磁盘情况df -hl# 查找程序ps -ef | grep -v grep | grep fisco-bcos# 查看端口占用情况netstat -ano | grep tcp |">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-01-23T16:32:11.000Z">
+<meta property="article:modified_time" content="2024-12-19T03:44:33.084Z">
+<meta property="article:author" content="船夫">
+<meta property="article:tag" content="Linux">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://blog.freekilly.com/2021/01/24/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Linux常用命令 | ik's blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="ik's blog" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">ik's blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">生命不熄，折腾不止</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/killy412" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.freekilly.com/2021/01/24/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="船夫">
+      <meta itemprop="description" content="今天周二">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ik's blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Linux常用命令
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-01-24 00:32:11" itemprop="dateCreated datePublished" datetime="2021-01-24T00:32:11+08:00">2021-01-24</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看某个进程的子进程</span></span><br><span class="line">pstree -p [pid]</span><br><span class="line"><span class="comment"># 查看进程中子线程的资源占用情况</span></span><br><span class="line">top -Hp [pid]</span><br><span class="line">top -n 1 -H -p [pid]</span><br><span class="line"><span class="comment"># 查看磁盘情况</span></span><br><span class="line"><span class="built_in">df</span> -hl</span><br><span class="line"><span class="comment"># 查找程序</span></span><br><span class="line">ps -ef | grep -v grep | grep fisco-bcos</span><br><span class="line"><span class="comment"># 查看端口占用情况</span></span><br><span class="line">netstat -ano | grep tcp |grep 8545</span><br><span class="line">netstat -tnlp | grep ssh</span><br><span class="line">netstat -anpt| grep ssh</span><br><span class="line"><span class="comment"># 查看端口占用进程</span></span><br><span class="line">lsof -i:&lt;端口&gt;</span><br><span class="line"><span class="comment"># 添加执行权限</span></span><br><span class="line"><span class="built_in">chmod</span> a+x &lt;文件名&gt;</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+<h2 id="解决挖矿情况"><a href="#解决挖矿情况" class="headerlink" title="解决挖矿情况"></a>解决挖矿情况</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">查看文件隐藏属性</span></span><br><span class="line">lsattr /var/spool/cron/root</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">修改隐藏属性</span></span><br><span class="line">chattr -isa /var/spool/cron/root</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">查看定时任务</span></span><br><span class="line">crontab -l</span><br><span class="line">cat /var/spool/cron/root</span><br></pre></td></tr></table></figure>
+<h2 id="scp-拷贝文件-x2F-文件夹命令"><a href="#scp-拷贝文件-x2F-文件夹命令" class="headerlink" title="scp 拷贝文件&#x2F;文件夹命令"></a>scp 拷贝文件&#x2F;文件夹命令</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">远程仓库拷贝文件到本地  xx.xx.x.xx为服务器ip</span></span><br><span class="line">scp root@xx.xx.x.xx:/opt/soft/demo.tar /opt/soft/</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">远程仓库拷贝目录到本地</span></span><br><span class="line">scp -r root@xx.xx.x.xx:/opt/soft/test /opt/soft/</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">上传文件到服务器指定目录</span></span><br><span class="line">scp /opt/soft/demo.tar root@xx.xx.x.xx:/opt/soft/scptest</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">上传本地目录到服务器指定目录</span></span><br><span class="line">scp -r /opt/soft/test root@xx.xx.x.xx:/opt/soft/scptest</span><br></pre></td></tr></table></figure>
+
+<h2 id="grep-命令"><a href="#grep-命令" class="headerlink" title="grep 命令"></a>grep 命令</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">搜索文本 grep命令相关</span></span><br><span class="line">grep [-acinv] [--color=auto] &#x27;搜寻字符串&#x27; [filename]</span><br><span class="line">选项与参数：</span><br><span class="line">-i:忽略大小写的不同，所以大小写视为相同</span><br><span class="line">-E:可以使用正则表达式</span><br><span class="line">-n:顺便输出行号</span><br><span class="line">-r:递归文件夹下的所有子文件</span><br><span class="line">-l, --files-with-matches  只打印有匹配的&lt;文件&gt;的名称</span><br><span class="line">-a:将 binary 文件以 text 文件的方式搜寻数据</span><br><span class="line">-c:计算找到 &#x27;搜寻字符串&#x27; 的次数</span><br><span class="line">-C:显示前后的行数</span><br><span class="line">-I:忽略二进制文件</span><br><span class="line">-v:反向选择，亦即显示出没有 &#x27;搜寻字符串&#x27; 内容的那一行！</span><br><span class="line">-L, --files-without-match  只打印没有匹配上的&lt;文件&gt;的名称</span><br><span class="line">--color=auto/always:可以将找到的关键词部分加上颜色的显示喔！</span><br></pre></td></tr></table></figure>
+
+<h2 id="screen-命令"><a href="#screen-命令" class="headerlink" title="screen 命令"></a>screen 命令</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">新建一个名叫 <span class="built_in">test</span> 的session，并马上进入</span></span><br><span class="line">screen -S test</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">创建一个名叫 <span class="built_in">test</span> 的session，但暂不进入，可用于系统启动脚本里</span></span><br><span class="line">screen -dmS test</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">列出当前所有session</span></span><br><span class="line">screen -ls</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">接入(attach)一个名为<span class="built_in">test</span>会话</span></span><br><span class="line">screen -r test</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">远程脱离(detach) <span class="built_in">test</span> 会话</span></span><br><span class="line">screen -d test</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">脱离(detach)当前会话，将目前的 screen session (可能含有多个 windows) 丢到后台执行</span></span><br><span class="line">CTRL+a然后d</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">查看 screen 版本号</span></span><br><span class="line">screen -v</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">如果由于某种原因其中一个会话死掉了（例如人为杀掉该会话），这时screen -list会显示该会话为dead状态。使用screen -wipe命令清除该会话：</span></span><br><span class="line">screen -wipe</span><br></pre></td></tr></table></figure>
+
+<h2 id="后台运行程序命令-nohup"><a href="#后台运行程序命令-nohup" class="headerlink" title="后台运行程序命令: nohup"></a>后台运行程序命令: nohup</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nohup /root/runoob.sh &gt; runoob.log 2&gt;&amp;1 &amp;</span><br></pre></td></tr></table></figure>
+
+<p><strong>2&gt;&amp;1</strong> 解释:</p>
+<p>将标准错误 2 重定向到标准输出 &amp;1 ，标准输出 &amp;1 再被重定向输入到 runoob.log 文件中。</p>
+<ul>
+<li>0 – stdin (standard input，标准输入)</li>
+<li>1 – stdout (standard output，标准输出)</li>
+<li>2 – stderr (standard error，标准错误输出)</li>
+</ul>
+<h2 id="terminal-配置代理"><a href="#terminal-配置代理" class="headerlink" title="terminal 配置代理"></a>terminal 配置代理</h2><p>在 .bashrc 或 .zshrc 中设置如下内容</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">alias setproxy=&quot;export ALL_PROXY=socks5://127.0.0.1:1080&quot;</span><br><span class="line">alias unsetproxy=&quot;unset ALL_PROXY&quot;</span><br><span class="line">aliaa ip=&quot;curl -i http://ip.cn&quot;</span><br></pre></td></tr></table></figure>
+
+<p>在使用是手动调用这些命令进行设置。</p>
+<p>或者使终端总是使用代理：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export http_proxy=&quot;socks5://127.0.0.1:1086&quot;</span><br><span class="line">export https_proxy=&quot;socks5://127.0.0.1:1086&quot;</span><br></pre></td></tr></table></figure>
+
+<p>重启 terminal 生效。可以通过 curl -i <a target="_blank" rel="noopener" href="http://ip.cn查看ip改变来测试是否生效/">http://ip.cn查看IP改变来测试是否生效</a></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/Linux/" rel="tag"><i class="fa fa-tag"></i> Linux</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/01/24/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E4%BB%A3%E7%90%86/" rel="prev" title="设计模式之代理">
+      <i class="fa fa-chevron-left"></i> 设计模式之代理
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/01/30/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3JVM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E5%86%85%E5%AD%98/" rel="next" title="深入理解JVM虚拟机-内存">
+      深入理解JVM虚拟机-内存 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="nav-number">1.</span> <span class="nav-text">常用命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%E6%8C%96%E7%9F%BF%E6%83%85%E5%86%B5"><span class="nav-number">2.</span> <span class="nav-text">解决挖矿情况</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#scp-%E6%8B%B7%E8%B4%9D%E6%96%87%E4%BB%B6-x2F-%E6%96%87%E4%BB%B6%E5%A4%B9%E5%91%BD%E4%BB%A4"><span class="nav-number">3.</span> <span class="nav-text">scp 拷贝文件&#x2F;文件夹命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#grep-%E5%91%BD%E4%BB%A4"><span class="nav-number">4.</span> <span class="nav-text">grep 命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#screen-%E5%91%BD%E4%BB%A4"><span class="nav-number">5.</span> <span class="nav-text">screen 命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%8E%E5%8F%B0%E8%BF%90%E8%A1%8C%E7%A8%8B%E5%BA%8F%E5%91%BD%E4%BB%A4-nohup"><span class="nav-number">6.</span> <span class="nav-text">后台运行程序命令: nohup</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#terminal-%E9%85%8D%E7%BD%AE%E4%BB%A3%E7%90%86"><span class="nav-number">7.</span> <span class="nav-text">terminal 配置代理</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="船夫"
+      src="/images/avatar.jpeg">
+  <p class="site-author-name" itemprop="name">船夫</p>
+  <div class="site-description" itemprop="description">今天周二</div>
+</div>
+
+
+   <div class="feed-link motion-element">
+     <a href="/atom.xml" rel="alternate">
+       <i class="fa fa-rss"></i>
+       RSS
+     </a>
+   </div>
+ 
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">27</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">34</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Killy412" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Killy412" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/lxq413@126.com" title="E-Mail → lxq413@126.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2020 – 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">船夫</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='150' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/pjax/pjax.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '.languages',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[data-pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.dataset.pjax !== undefined) {
+      script.dataset.pjax = '';
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+  <script defer src="/lib/three/three.min.js"></script>
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+  
+
+  
+
+    </div>
+</body>
+</html>
